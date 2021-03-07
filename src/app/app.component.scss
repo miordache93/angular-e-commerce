@@ -1,0 +1,40 @@
+@import "breakpoints";
+
+.mat-toolbar.mat-primary {
+  -webkit-transition: 700ms;
+  -ms-transition: 700ms;
+  transition: 700ms;
+  -webkit-animation: sk-bounce 2s infinite ease-in-out;
+  animation: sk-bounce 2s infinite ease-in-out;
+}
+
+mat-toolbar {
+  ::ng-deep {
+    mat-toolbar-row {
+      @media screen and (min-width: #{$md}) {
+        width: 80%;
+        margin: auto;
+      }
+    }
+  }
+}
+
+.mat-toolbar.sticky:hover {
+  opacity: 1;
+}
+
+.fixed {
+  position: absolute;
+  top: 0;
+  z-index: 5;
+  align-content: center;
+  color: #fff;
+}
+
+.sticky {
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  z-index: 5;
+  opacity: 0.6;
+}

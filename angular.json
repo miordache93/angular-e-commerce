@@ -4,15 +4,16 @@
   "newProjectRoot": "projects",
   "projects": {
     "angular-e-commerce": {
-      "projectType": "application",
+      "projectType": "application",      
       "schematics": {
         "@schematics/angular:component": {
-          "style": "sass"
+          "style": "scss"
         }
       },
-      "root": "",
+      "root": "src",
       "sourceRoot": "src",
       "prefix": "app",
+
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -22,15 +23,21 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                ".",
+                "./src/styles"
+              ]
+            },
             "aot": true,
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
-              "src/default-theme.scss",
-              "src/dark-theme.scss",
-              "src/styles.sass"
+              "./src/styles/default-theme.scss",
+              "./src/styles/dark-theme.scss",
+              "./src/styles.scss"
             ],
             "scripts": []
           },
@@ -127,5 +134,10 @@
       }
     }
   },
-  "defaultProject": "angular-e-commerce"
+  "defaultProject": "angular-e-commerce",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }

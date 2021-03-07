@@ -1,12 +1,38 @@
-<div class="app__component" [class.dark-theme]="otherTheme">
-  <app-header></app-header>
-  <div class="app__component-container">
-    <router-outlet></router-outlet>
-  </div>
-  <app-footer></app-footer>
-    <!-- Theme testing
-      <h1>TESTING  THEME</h1>
-      <button mat-raised-button (click)="changeTheme()" color="primary">BUTTON</button>
-      <app-testing-component></app-testing-component>
-    -->
+<div class="app-component" style="height: 100vh;" [class.dark-theme]="otherTheme">
+  <mat-toolbar #toolBara class="app-component__toolbar fixed" color="primary">
+    <mat-toolbar-row fxLayoutAlign="space-between center">
+      <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span> {{ title }} </span>
+      <span class="menu-spacer"></span>
+      <div fxShow="true" fxHide.lt-md>
+        <a href="#" mat-button>Home</a>
+        <a href="#" mat-button>Products</a>
+        <a href="#" mat-button>User</a>
+        <a href="#" mat-button>Cart</a>
+        <a href="#" mat-button>Login / Sign Up</a>
+        <a href="#" mat-button>Logout</a>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <mat-sidenav-container fxFlexFill>
+    <mat-sidenav #sidenav>
+      <mat-nav-list>
+        <!-- <a (click)="sidenav.toggle()" href="" mat-list-item>Close</a> -->
+        <a href="#" mat-list-item>User</a>
+        <a href="#" mat-list-item>Products</a>
+        <a href="#" mat-list-item>Cart</a>
+        <a href="#" mat-list-item>Login / Sign Up</a>
+        <a href="#" mat-list-item>Logout</a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content #content cdkScrollable fxFlexFill>
+      <div class="app-component__container" style="height: 1900px;">
+        <p *ngFor="let content of fillerContent">{{content}}</p>
+      </div>
+      <app-footer></app-footer>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
 </div>
