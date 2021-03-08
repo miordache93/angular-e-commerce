@@ -22,12 +22,19 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { DashboardComponent } from './features/dashboard/dashboard.component';
+
+// NgRx Store
+import { StoreModule } from '@ngrx/store';
+import { appSettingsReducer } from './ngrx/reducers/settings.reducers';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     TestingComponentComponent,
-    FooterComponent
+    FooterComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -48,6 +55,7 @@ import { MatListModule } from '@angular/material/list';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
+    StoreModule.forRoot({appSettings: appSettingsReducer})
   ],
   providers: [],
   bootstrap: [AppComponent],

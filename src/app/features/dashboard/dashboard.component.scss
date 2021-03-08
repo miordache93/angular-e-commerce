@@ -1,0 +1,19 @@
+.dashboard-component {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 80%;
+    margin: auto;
+    height: 100%;
+    border: 2px solid black;
+    padding-top: 64px;
+
+    div:first-child {
+        border: 2px dashed brown;
+    }
+
+    div:nth-child(2) {
+        border: 2px solid green;
+    }
+}

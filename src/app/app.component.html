@@ -29,8 +29,8 @@
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content #content cdkScrollable fxFlexFill>
-      <div class="app-component__container" style="height: 1900px;">
-        <p *ngFor="let content of fillerContent">{{content}}</p>
+      <div class="app-component__container">
+        <router-outlet></router-outlet>
       </div>
       <app-footer></app-footer>
     </mat-sidenav-content>

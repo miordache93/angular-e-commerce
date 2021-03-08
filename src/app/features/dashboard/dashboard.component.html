@@ -1,0 +1,15 @@
+<div class="dashboard-component">
+    <div>
+        <h1>{{'title' | translate }}</h1>
+        <h2>Current language: {{ language }}</h2>
+        <h2>Current theme: {{ theme }} </h2>
+        <button (click)="changeTheme()"> Change theme from dashboard</button>
+        <button (click)="changeLanguage('en')">Switch Language EN</button>
+        <button (click)="changeLanguage('ro')">Switch Language RO</button>
+    </div>
+   
+    <div>
+        <p *ngFor="let content of fillerContent">{{content}}</p>
+
+    </div>
+</div>
