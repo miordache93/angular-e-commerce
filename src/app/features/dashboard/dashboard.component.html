@@ -2,14 +2,18 @@
     <div>
         <h1>{{'title' | translate }}</h1>
         <h2>Current language: {{ language }}</h2>
-        <h2>Current theme: {{ theme }} </h2>
-        <button (click)="changeTheme()"> Change theme from dashboard</button>
+        <h2>Current theme: {{ theme$ | async }} </h2>
         <button (click)="changeLanguage('en')">Switch Language EN</button>
         <button (click)="changeLanguage('ro')">Switch Language RO</button>
     </div>
    
+    <div fxFlex fxLayoutGap="20px" fxLayout="row" fxLayoutAlign="space-between center">
+        <h1>Theme switch from dashboard component</h1>
+        <button (click)="changeTheme('DEFAULT-THEME')"> Change to default theme</button>
+        <button (click)="changeTheme('dark-theme')"> Change to dark theme</button>
+        <button (click)="changeTheme('crazy-theme')"> Change to crazy theme </button>
+    </div>
     <div>
         <p *ngFor="let content of fillerContent">{{content}}</p>
-
     </div>
 </div>

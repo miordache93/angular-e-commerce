@@ -1,1 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+@import './themes/default-theme';
+@import './themes/dark-theme';
+@import './themes/crazy-theme';
+
+@import './app/shared/components/footer/footer.component.theme';
+
+
+@mixin custom-components-theme($theme) {
+  @include app-footer-component-theme($theme);
+} 
+
+.default-theme {
+  @include angular-material-theme($candy-app-theme);
+  @include custom-components-theme($candy-app-theme);
+}
+
+.dark-theme {
+  @include angular-material-theme($dark-theme);
+  @include custom-components-theme($dark-theme);
+}
+
+.crazy-theme {
+  @include angular-material-theme($crazy-theme);
+  @include custom-components-theme($crazy-theme);
+}

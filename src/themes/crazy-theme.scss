@@ -1,0 +1,10 @@
+$crazy-primary: mat-palette($mat-grey, 700, 300, 900);
+$crazy-accent:  mat-palette($mat-blue-grey, 400);
+$crazy-warn:    mat-palette($mat-red, 500);
+$crazy-theme:   mat-light-theme((
+  color: (
+    primary: $crazy-primary,
+    accent: $crazy-accent,
+    warn: $crazy-warn,
+  )
+));

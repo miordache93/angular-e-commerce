@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { Store } from '@ngrx/store';
-import { AppSettingsState } from 'src/app/ngrx/reducers/settings.reducers';
+import { Store, select } from '@ngrx/store';
+import { actionSettingsChangeTheme } from 'src/app/store/actions/settings.actions';
+import { Observable } from 'rxjs';
+import { selectTheme } from 'src/app/store/selectors/settings.selectors';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,34 +13,27 @@ import { AppSettingsState } from 'src/app/ngrx/reducers/settings.reducers';
 export class DashboardComponent implements OnInit {
 
   title = 'Hello';
-  theme = false;
+  theme$: Observable<string>;
   language = 'en';
 
   fillerContent = Array(50).fill(0).map(() =>
-  `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+    `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
     labore et dolore magna aliqua.`);
 
-  constructor(private translateService: TranslateService, private store: Store<any>) {
-    this.store.select(state => state.appSettings.darkTheme).subscribe(res => {
-      this.theme = res;
-    });
-   }
+  constructor(private translateService: TranslateService, private store: Store<any>) { }
 
   ngOnInit(): void {
+    this.theme$ = this.store.pipe(select(selectTheme));
   }
 
   changeLanguage(lang): void {
     this.translateService.use(lang);
   }
 
-  changeTheme(): void {
-    this.theme = !this.theme;
-    this.store.dispatch({
-      type: 'CHANGE_APP_SETTINGS',
-      payload: {
-        darkTheme: this.theme
-      }
-    });
+  changeTheme(theme): void {
+    this.store.dispatch(actionSettingsChangeTheme({
+      theme
+    }));
   }
 
 }

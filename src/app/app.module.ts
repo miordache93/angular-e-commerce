@@ -26,7 +26,8 @@ import { DashboardComponent } from './features/dashboard/dashboard.component';
 
 // NgRx Store
 import { StoreModule } from '@ngrx/store';
-import { appSettingsReducer } from './ngrx/reducers/settings.reducers';
+import { settingsReducer } from './store/reducers/settings.reducers';
+import { metaReducers, reducers } from './store/state';
 
 
 @NgModule({
@@ -55,7 +56,7 @@ import { appSettingsReducer } from './ngrx/reducers/settings.reducers';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    StoreModule.forRoot({appSettings: appSettingsReducer})
+    StoreModule.forRoot(reducers, {metaReducers})
   ],
   providers: [],
   bootstrap: [AppComponent],

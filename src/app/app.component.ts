@@ -1,19 +1,21 @@
-import { Component, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, ViewChild, AfterViewInit, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { MatSidenavContainer, MatSidenavContent } from '@angular/material/sidenav';
 import { CdkScrollable } from '@angular/cdk/scrolling';
 import { MatToolbar } from '@angular/material/toolbar';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { selectTheme } from './store/selectors/settings.selectors';
+import { actionSettingsChangeTheme } from './store/actions/settings.actions';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent implements OnInit, AfterViewInit {
   title = 'Angular E-Commerce';
-  otherTheme = false;
-
+  theme$: Observable<string>;
 
   @ViewChild(MatSidenavContainer, {static: true }) sidenavContainer: MatSidenavContainer;
   @ViewChild(CdkScrollable, {static: true }) scrollable: CdkScrollable;
@@ -22,9 +24,10 @@ export class AppComponent implements AfterViewInit {
 
   constructor(private translate: TranslateService, private store: Store<any>) {
     translate.setDefaultLang('en');
-    this.store.select(state => state).subscribe(res => {
-      this.otherTheme = res.appSettings.darkTheme;
-    });
+  }
+  
+  ngOnInit(): void {
+    this.theme$ = this.store.pipe(select(selectTheme));
   }
 
   ngAfterViewInit(): void {
@@ -40,9 +43,5 @@ export class AppComponent implements AfterViewInit {
         this.toolbar._elementRef.nativeElement.classList.remove('sticky');
       }
     });
-  }
-
-  changeTheme(): void {
-    this.otherTheme = !this.otherTheme;
   }
 }

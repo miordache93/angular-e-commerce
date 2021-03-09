@@ -1,4 +1,4 @@
-<div class="app-component" style="height: 100vh;" [class.dark-theme]="otherTheme">
+<div class="app-component" style="height: 100vh;" [class]="'theme-wrapper ' + (theme$ | async)">
   <mat-toolbar #toolBara class="app-component__toolbar fixed" color="primary">
     <mat-toolbar-row fxLayoutAlign="space-between center">
       <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
