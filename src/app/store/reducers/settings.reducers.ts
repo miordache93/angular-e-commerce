@@ -4,7 +4,7 @@ import { actionSettingsChangeLanguage, actionSettingsChangeTheme } from '../acti
 
 export const initialState: SettingsState = {
     language: 'en',
-    theme: 'DEFAULT-THEME'
+    theme: 'default-theme'
 };
 
 const reducer = createReducer(
