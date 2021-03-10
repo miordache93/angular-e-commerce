@@ -5,7 +5,7 @@ import { CdkScrollable } from '@angular/cdk/scrolling';
 import { MatToolbar } from '@angular/material/toolbar';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { selectTheme } from './store/selectors/settings.selectors';
+import { selectTheme, selectSettingsLanguage } from './store/selectors/settings.selectors';
 import { actionSettingsChangeTheme } from './store/actions/settings.actions';
 
 @Component({
@@ -16,18 +16,23 @@ import { actionSettingsChangeTheme } from './store/actions/settings.actions';
 export class AppComponent implements OnInit, AfterViewInit {
   title = 'Angular E-Commerce';
   theme$: Observable<string>;
+  language: string;
 
-  @ViewChild(MatSidenavContainer, {static: true }) sidenavContainer: MatSidenavContainer;
-  @ViewChild(CdkScrollable, {static: true }) scrollable: CdkScrollable;
+  @ViewChild(MatSidenavContainer, { static: true }) sidenavContainer: MatSidenavContainer;
+  @ViewChild(CdkScrollable, { static: true }) scrollable: CdkScrollable;
   @ViewChild(MatSidenavContent, { static: true }) content: MatSidenavContent;
-  @ViewChild('toolBara', {static: true }) toolbar: MatToolbar;
+  @ViewChild('toolBara', { static: true }) toolbar: MatToolbar;
 
-  constructor(private translate: TranslateService, private store: Store<any>) {
-    translate.setDefaultLang('en');
+  constructor(private translateService: TranslateService, private store: Store<any>) {
+    translateService.setDefaultLang('en');
   }
-  
+
   ngOnInit(): void {
     this.theme$ = this.store.pipe(select(selectTheme));
+    this.store.pipe(select(selectSettingsLanguage)).subscribe(lang => {
+      this.translateService.use(lang);
+      this.language = lang;
+    });
   }
 
   ngAfterViewInit(): void {

@@ -14,6 +14,11 @@ export const selectSettings = createSelector(
 );
 
 export const selectTheme = createSelector(
-    selectSettings,
-    (settings: any) => settings.theme
-  );
+  selectSettings,
+  (settings: any) => settings.theme
+);
+
+export const selectSettingsLanguage = createSelector(
+  selectSettings,
+  (state: SettingsState) => state.language
+);

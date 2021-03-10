@@ -1,10 +1,11 @@
 <div class="dashboard-component">
     <div>
         <h1>{{'title' | translate }}</h1>
-        <h2>Current language: {{ language }}</h2>
+        <h2>Current language: {{ language$ | async }}</h2>
         <h2>Current theme: {{ theme$ | async }} </h2>
         <button (click)="changeLanguage('en')">Switch Language EN</button>
         <button (click)="changeLanguage('ro')">Switch Language RO</button>
+        <button (click)="changeLanguage('fr')">Switch Language FR</button>
     </div>
    
     <div fxFlex fxLayoutGap="20px" fxLayout="row" fxLayoutAlign="space-between center">
