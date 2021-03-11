@@ -10,31 +10,26 @@ import { debug } from './reducers/debug.reducer';
 import { environment } from '../../environments/environment';
 
 export const reducers: ActionReducerMap<AppState> = {
-    settings: settingsReducer,
-    router: routerReducer
+  settings: settingsReducer,
+  router: routerReducer
 };
 
 export const metaReducers: MetaReducer<AppState>[] = [
-    initStateFromLocalStorage
+  initStateFromLocalStorage
 ];
 
 if (!environment.production) {
-    if (!environment.test) {
-      metaReducers.unshift(debug);
-    }
+  if (!environment.test) {
+    metaReducers.unshift(debug);
   }
-
-//   export const selectRouterState = createFeatureSelector<
-//   AppState,
-//   RouterReducerState<RouterStateUrl>
-// >('router');
+}
 
 // export const selectAuthState = createFeatureSelector<AppState, AuthState>(
 //     'auth'
 //   );
 
 export interface AppState {
-    settings: SettingsState;
-    router: RouterReducerState<RouterStateUrl>;
+  settings: SettingsState;
+  router: RouterReducerState<RouterStateUrl>;
 }
 

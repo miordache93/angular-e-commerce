@@ -22,3 +22,14 @@ export const selectSettingsLanguage = createSelector(
   selectSettings,
   (state: SettingsState) => state.language
 );
+
+export const selectPageAnimations = createSelector(
+  selectSettings,
+  (settings) => settings.pageAnimations
+);
+
+export const selectElementsAnimations = createSelector(
+  selectSettings,
+  (settings) => settings.elementsAnimations
+);
+

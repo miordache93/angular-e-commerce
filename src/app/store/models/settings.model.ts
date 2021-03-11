@@ -6,6 +6,8 @@ export type Language = 'en' | 'ro' | 'fr' ;
 export interface SettingsState {
   language: string;
   theme: string;
+  elementsAnimations: boolean;
+  pageAnimations: boolean;
 }
 
 export interface State {

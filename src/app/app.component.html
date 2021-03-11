@@ -7,8 +7,8 @@
       <span> {{ title }} </span>
       <span class="menu-spacer"></span>
       <div fxShow="true" fxHide.lt-md>
-        <a href="#" mat-button>Home</a>
-        <a href="#" mat-button>Products</a>
+        <a routerLink="/" mat-button>Home</a>
+        <a routerLink="/products" mat-button>Products</a>
         <a href="#" mat-button>User</a>
         <a href="#" mat-button>Cart</a>
         <a href="#" mat-button>Login / Sign Up</a>
@@ -29,8 +29,8 @@
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content #content cdkScrollable fxFlexFill>
-      <div class="app-component__container">
-        <router-outlet></router-outlet>
+      <div class="app-component__container" [@routeAnimations]="o.isActivated">
+        <router-outlet #o="outlet"></router-outlet>
       </div>
       <app-footer></app-footer>
     </mat-sidenav-content>

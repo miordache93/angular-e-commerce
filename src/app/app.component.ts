@@ -7,11 +7,13 @@ import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { selectTheme, selectSettingsLanguage } from './store/selectors/settings.selectors';
 import { actionSettingsChangeTheme } from './store/actions/settings.actions';
+import { routeAnimations } from './shared/constants/route.animations';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  animations: [routeAnimations]
 })
 export class AppComponent implements OnInit, AfterViewInit {
   title = 'Angular E-Commerce';

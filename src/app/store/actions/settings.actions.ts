@@ -10,3 +10,13 @@ export const actionSettingsChangeTheme = createAction(
     '[Settings] Change Theme',
     props<{ theme: string }>()
 );
+
+export const actionSettingsChangeAnimationsPage = createAction(
+  '[Settings] Change Animations Page',
+  props<{ pageAnimations: boolean }>()
+);
+
+export const actionSettingsChangeAnimationsElements = createAction(
+  '[Settings] Change Animations Elements',
+  props<{ elementsAnimations: boolean }>()
+);

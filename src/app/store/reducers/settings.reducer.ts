@@ -1,10 +1,17 @@
 import { createReducer, on, Action } from '@ngrx/store';
 import { SettingsState } from '../models/settings.model';
-import { actionSettingsChangeLanguage, actionSettingsChangeTheme } from '../actions/settings.actions';
+import { actionSettingsChangeLanguage,
+        actionSettingsChangeTheme,
+        actionSettingsChangeAnimationsPage,
+        actionSettingsChangeAnimationsElements
+} from '../actions/settings.actions';
 
 export const initialState: SettingsState = {
     language: 'en',
-    theme: 'default-theme'
+    theme: 'default-theme',
+    elementsAnimations: true,
+    pageAnimations: true
+
 };
 
 const reducer = createReducer(
@@ -12,6 +19,8 @@ const reducer = createReducer(
     on(
         actionSettingsChangeLanguage,
         actionSettingsChangeTheme,
+        actionSettingsChangeAnimationsPage,
+        actionSettingsChangeAnimationsElements,
         (state, action) => ({ ...state, ...action })
     )
 );

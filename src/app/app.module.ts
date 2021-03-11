@@ -27,6 +27,8 @@ import { DashboardComponent } from './features/dashboard/dashboard.component';
 // NgRx Store
 import { StoreModule } from '@ngrx/store';
 import { metaReducers, reducers } from './store/state';
+import { EffectsModule } from '@ngrx/effects';
+import { SettingsEffects } from './store/effects/settings.effects';
 
 
 @NgModule({
@@ -38,9 +40,9 @@ import { metaReducers, reducers } from './store/state';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     MatButtonModule,
-    BrowserAnimationsModule,
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {
@@ -55,7 +57,10 @@ import { metaReducers, reducers } from './store/state';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    StoreModule.forRoot(reducers, {metaReducers})
+    StoreModule.forRoot(reducers, {metaReducers}),
+    EffectsModule.forRoot([
+      SettingsEffects
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent],

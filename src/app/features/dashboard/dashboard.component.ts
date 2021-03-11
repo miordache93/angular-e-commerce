@@ -4,6 +4,7 @@ import { Store, select } from '@ngrx/store';
 import { actionSettingsChangeTheme, actionSettingsChangeLanguage } from 'src/app/store/actions/settings.actions';
 import { Observable } from 'rxjs';
 import { selectTheme, selectSettingsLanguage } from 'src/app/store/selectors/settings.selectors';
+import { ROUTE_ANIMATIONS_ELEMENTS } from 'src/app/shared/constants/route.animations';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,6 +16,7 @@ export class DashboardComponent implements OnInit {
   title = 'Hello';
   theme$: Observable<string>;
   language$: Observable<string>;
+  routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
 
   fillerContent = Array(50).fill(0).map(() =>
     `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
