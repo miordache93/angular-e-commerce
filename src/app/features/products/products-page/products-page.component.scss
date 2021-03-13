@@ -1,5 +1,5 @@
 .productsPage-component {
-  height: 500px;
+  height: 100%;
   padding: 30px;
   text-align: center;
 }
@@ -18,7 +18,7 @@
   transition: 0.3s;
 }
 
-.product-card :hover {
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+.product-cardhover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.3);
 
 }

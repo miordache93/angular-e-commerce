@@ -42,12 +42,10 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.scrollable.elementScrolled().subscribe((event) => {
-      console.log(event);
       const scrollTop = this.sidenavContainer.scrollable.getElementRef().nativeElement.scrollTop;
       if (scrollTop > 0) {
         this.toolbar._elementRef.nativeElement.classList.add('sticky');
         this.toolbar._elementRef.nativeElement.classList.remove('fixed');
-        // console.log('SCroll', "sticky");
       } else {
         this.toolbar._elementRef.nativeElement.classList.add('fixed');
         this.toolbar._elementRef.nativeElement.classList.remove('sticky');
@@ -55,7 +53,8 @@ export class AppComponent implements OnInit, AfterViewInit {
     });
   }
 
-  navigateHome() {
+  navigateHome(): void {
     this.router.navigate(['/']);
+    this.sidenavContainer.close()
   }
 }

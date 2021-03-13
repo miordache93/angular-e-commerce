@@ -40,5 +40,6 @@ mat-toolbar {
 }
 
 .app-component__container {
-  height: 100vh;
+  min-height: 100vh;
+  padding-top: 64px;
 }
