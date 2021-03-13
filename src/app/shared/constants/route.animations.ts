@@ -69,18 +69,18 @@ export const routeAnimations = trigger('routeAnimations', [
     transition(isRouteAnimationsElements, STEPS_ELEMENTS)
 ]);
 
-export function isRouteAnimationsAll() {
+export function isRouteAnimationsAll(): boolean {
     return AnimationsService.isRouteAnimationsType('ALL');
 }
 
-export function isRouteAnimationsNone() {
+export function isRouteAnimationsNone(): boolean {
     return AnimationsService.isRouteAnimationsType('NONE');
 }
 
-export function isRouteAnimationsPage() {
+export function isRouteAnimationsPage(): boolean {
     return AnimationsService.isRouteAnimationsType('PAGE');
 }
 
-export function isRouteAnimationsElements() {
+export function isRouteAnimationsElements(): boolean {
     return AnimationsService.isRouteAnimationsType('ELEMENTS');
 }

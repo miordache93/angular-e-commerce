@@ -22,6 +22,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import {MatCardModule} from '@angular/material/card';
+
+// Custom imports
 import { DashboardComponent } from './features/dashboard/dashboard.component';
 
 // NgRx Store
@@ -57,6 +60,7 @@ import { SettingsEffects } from './store/effects/settings.effects';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
+    MatCardModule,
     StoreModule.forRoot(reducers, {metaReducers}),
     EffectsModule.forRoot([
       SettingsEffects

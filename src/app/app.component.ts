@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 import { selectTheme, selectSettingsLanguage } from './store/selectors/settings.selectors';
 import { actionSettingsChangeTheme } from './store/actions/settings.actions';
 import { routeAnimations } from './shared/constants/route.animations';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -25,7 +26,9 @@ export class AppComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSidenavContent, { static: true }) content: MatSidenavContent;
   @ViewChild('toolBara', { static: true }) toolbar: MatToolbar;
 
-  constructor(private translateService: TranslateService, private store: Store<any>) {
+  constructor(private translateService: TranslateService,
+              private router: Router,
+              private store: Store<any>) {
     translateService.setDefaultLang('en');
   }
 
@@ -50,5 +53,9 @@ export class AppComponent implements OnInit, AfterViewInit {
         this.toolbar._elementRef.nativeElement.classList.remove('sticky');
       }
     });
+  }
+
+  navigateHome() {
+    this.router.navigate(['/']);
   }
 }

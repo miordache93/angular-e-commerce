@@ -4,7 +4,7 @@
       <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
         <mat-icon>menu</mat-icon>
       </button>
-      <span> {{ title }} </span>
+      <span (click)="navigateHome()"> {{ title }} </span>
       <span class="menu-spacer"></span>
       <div fxShow="true" fxHide.lt-md>
         <a routerLink="/" mat-button>Home</a>
@@ -22,7 +22,7 @@
       <mat-nav-list>
         <!-- <a (click)="sidenav.toggle()" href="" mat-list-item>Close</a> -->
         <a routerLink="/" mat-list-item>Home</a>
-        <a routerLink="/products" mat-list-item>Products</a>
+        <a [routerLink]="['/products']" mat-list-item>Products</a>
         <a href="#" mat-list-item>Cart</a>
         <a href="#" mat-list-item>Login / Sign Up</a>
         <a href="#" mat-list-item>Logout</a>
@@ -31,8 +31,9 @@
     <mat-sidenav-content #content cdkScrollable fxFlexFill>
       <div class="app-component__container" [@routeAnimations]="o.isActivated">
         <router-outlet #o="outlet"></router-outlet>
+        <app-footer></app-footer>
       </div>
-      <app-footer></app-footer>
     </mat-sidenav-content>
+
   </mat-sidenav-container>
 </div>

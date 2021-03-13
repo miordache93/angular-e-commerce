@@ -1,6 +1,12 @@
-<div class="productsPage-component" [ngClass]="routeAnimationsElements">
-    <h1>Product page title</h1>
-    <h2>Product page filters</h2>
-    <h2>Product page cards list</h2>
-    <h2>Product page paginations</h2>
+<div class="productsPage-component">
+    <!-- <h1>Product page title</h1>
+    <h2 [ngClass]="routeAnimationsElements">Product page filters</h2>
+    <h2 [ngClass]="routeAnimationsElements">Product page cards list</h2>
+    <h2>Product page paginations</h2> -->
+    <div class="products-container">
+        <h2>Products list</h2>
+        <div class="product-card" *ngFor="let product of products$ | async">
+            <app-product-card [product]="product"  [ngClass]="routeAnimationsElements"></app-product-card>
+        </div>
+    </div>
 </div>

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { actionSettingsChangeAnimationsElements, actionSettingsChangeAnimationsPage } from '../actions/settings.actions';
+import { actionSettingsChangeAnimationsElements, actionSettingsChangeAnimationsPage, actionSettingsChangeTheme, actionSettingsChangeLanguage } from '../actions/settings.actions';
 import { merge, combineLatest, of } from 'rxjs';
 import { AnimationsService } from 'src/app/shared/services/animations.service';
-import { selectPageAnimations, selectElementsAnimations } from '../selectors/settings.selectors';
+import { selectPageAnimations, selectElementsAnimations, selectSettingsState } from '../selectors/settings.selectors';
 import { Store, select } from '@ngrx/store';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 
@@ -14,16 +14,37 @@ import {
     filter
 } from 'rxjs/operators';
 import { State } from '../models/settings.model';
+import { LocalStorageService } from 'src/app/shared/services/local-storage.serice';
 
-const INIT = of('anms-init-effect-trigger');
+const INIT = of('init-effect-trigger');
 
+export const SETTINGS_KEY = 'SETTINGS';
 
 @Injectable()
 export class SettingsEffects {
 
     constructor(private animationsService: AnimationsService,
-        private actions$: Actions,
-        private store: Store<State>) { }
+                private localStorageService: LocalStorageService,
+                private actions$: Actions,
+                private store: Store<State>) { }
+
+        persistSettings = createEffect(
+            () =>
+              this.actions$.pipe(
+                ofType(
+                  actionSettingsChangeAnimationsElements,
+                  actionSettingsChangeAnimationsPage,
+                  actionSettingsChangeLanguage,
+                  actionSettingsChangeTheme
+                ),
+                withLatestFrom(this.store.pipe(select(selectSettingsState))),
+                tap(([action, settings]) =>
+                  this.localStorageService.setItem(SETTINGS_KEY, settings)
+                )
+              ),
+            { dispatch: false }
+          );
+
     updateRouteAnimationType = createEffect(
         () =>
             merge(
