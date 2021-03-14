@@ -1,0 +1,17 @@
+<ng-container *ngFor="let item of menuItems">
+  <!-- Handle main menu items here -->
+  <ng-container *ngIf="item.children">
+    <button mat-button [matMenuTriggerFor]="menu.navMenu">
+      <mat-icon>{{item.icon}}</mat-icon>
+      <span fxHide fxShow.gt-xs> {{ item.name | translate }} </span> 
+    </button>
+    <app-menu #menu [items]="item.children"></app-menu>
+  </ng-container>
+  <!-- Leaf sub menu items here -->
+  <ng-container *ngIf="!item.children">
+    <button mat-button [routerLink]="item.path">
+      <mat-icon>{{item.icon}}</mat-icon>
+      <span fxHide fxShow.gt-xs> {{item.name | translate }} </span>
+    </button>
+  </ng-container>
+</ng-container>

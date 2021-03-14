@@ -1,3 +1,16 @@
 {
-  "title": "Magazin Online in Angular"
+  "title": "Magazin Online in Angular",
+  "menuItems": {
+    "home": "Acasa",
+    "home2": "Acasa 2",
+    "home3": "Acasa 3",
+    "home4": "Acasa 4",
+    "User": "Utilizator",
+    "profile": "User Profile",
+    "products": "Produse",
+    "cart": "Cos",
+    "login": "Authentificare / Creeaza cont",
+    "logout": "Logout",
+    "wishlist": "Favorite"
+  }
 }

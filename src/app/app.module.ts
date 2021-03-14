@@ -22,7 +22,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
 
 // Custom imports
 import { DashboardComponent } from './features/dashboard/dashboard.component';
@@ -32,6 +33,11 @@ import { StoreModule } from '@ngrx/store';
 import { metaReducers, reducers } from './store/state';
 import { EffectsModule } from '@ngrx/effects';
 import { SettingsEffects } from './store/effects/settings.effects';
+import { SecondDashboardComponent } from './features/second-dashboard/second-dashboard.component';
+import { ThirdDashboardComponent } from './features/third-dashboard/third-dashboard.component';
+import { FourthDashboardComponent } from './features/fourth-dashboard/fourth-dashboard.component';
+import { MenuComponent } from './shared/menu/menu.component';
+import { MainMenuComponent } from './shared/main-menu/main-menu.component';
 
 
 @NgModule({
@@ -39,7 +45,12 @@ import { SettingsEffects } from './store/effects/settings.effects';
     AppComponent,
     TestingComponentComponent,
     FooterComponent,
-    DashboardComponent
+    DashboardComponent,
+    SecondDashboardComponent,
+    ThirdDashboardComponent,
+    FourthDashboardComponent,
+    MenuComponent,
+    MainMenuComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +72,8 @@ import { SettingsEffects } from './store/effects/settings.effects';
     MatIconModule,
     MatListModule,
     MatCardModule,
-    StoreModule.forRoot(reducers, {metaReducers}),
+    MatMenuModule,
+    StoreModule.forRoot(reducers, { metaReducers }),
     EffectsModule.forRoot([
       SettingsEffects
     ])
@@ -69,7 +81,7 @@ import { SettingsEffects } from './store/effects/settings.effects';
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
 
 // required for AOT compilation
 // tslint:disable-next-line:typedef

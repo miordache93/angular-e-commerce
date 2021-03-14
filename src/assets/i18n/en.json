@@ -1,3 +1,16 @@
 {
-  "title": "Angular E-Commerce App"
+  "title": "Angular E-Commerce App",
+  "menuItems": {
+    "home": "Home",
+    "home2": "Home 2",
+    "home3": "Home 3",
+    "home4": "Home 4",
+    "user": "User",
+    "profile": "User Profile",
+    "products": "Products",
+    "cart": "Cart",
+    "login": "Login",
+    "logout": "Logout",
+    "wishlist": "Wishlist"
+  }
 }

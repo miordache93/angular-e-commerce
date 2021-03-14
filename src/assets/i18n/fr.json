@@ -1,4 +1,17 @@
 {
-    "title": "Angular Magasin En Ligne"
+    "title": "Angular Magasin En Ligne",
+    "menuItems": {
+      "home": "Home",
+      "home2": "Home 2",
+      "home3": "Home 3",
+      "home4": "Home 4",
+      "user": "Utilisateur", 
+      "profile": "Profil de l utilisateur",
+      "products": "Produits",
+      "cart": "Panier",
+      "login": "Login",
+      "logout": "Logout",
+      "wishlist": "Favorite"
+    }
   }
   

@@ -9,6 +9,7 @@ import { selectTheme, selectSettingsLanguage } from './store/selectors/settings.
 import { actionSettingsChangeTheme } from './store/actions/settings.actions';
 import { routeAnimations } from './shared/constants/route.animations';
 import { Router } from '@angular/router';
+import { MENU_ITEMS } from './shared/constants/menu-items';
 
 @Component({
   selector: 'app-root',
@@ -20,6 +21,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   title = 'Angular E-Commerce';
   theme$: Observable<string>;
   language: string;
+  menuItems = MENU_ITEMS;
 
   @ViewChild(MatSidenavContainer, { static: true }) sidenavContainer: MatSidenavContainer;
   @ViewChild(CdkScrollable, { static: true }) scrollable: CdkScrollable;
