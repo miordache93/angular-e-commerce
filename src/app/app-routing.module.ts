@@ -4,6 +4,7 @@ import { DashboardComponent,
          SecondDashboardComponent,
          ThirdDashboardComponent,
          FourthDashboardComponent } from './features/';
+import { SettingsComponent } from './features/settings/settings.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'fourth-dashboard',
     component: FourthDashboardComponent
+  },
+  {
+    path: 'settings',
+    component: SettingsComponent
   },
   {
     path: 'products',

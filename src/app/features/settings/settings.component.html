@@ -1,0 +1,21 @@
+<div class="settings-component" fxFlex fxLayout="row wrap" fxLayoutAlign="space-between start">
+    <div class="language-container" fxFlex fxLayout="column" fxLayoutAlign="space-between start">
+      <h2>Change language</h2>
+      <!-- <div>
+        <mat-form-field style="width:88%;">
+          <span *ngIf="select.value" matPrefix style="margin-right: 8px;"><mat-icon [svgIcon]="select.value.flag"></mat-icon></span>
+          <mat-select #select placeholder="Language" [(ngModel)]="selectedLanguage" (selectionChange)="changeLanguage(selectedLanguage)">
+             <mat-option *ngFor="let language of languages" [value]="language">
+               <mat-icon [svgIcon]="language.flag"></mat-icon>
+             </mat-option>
+          </mat-select>
+      </mat-form-field>
+      </div> -->
+    </div>
+    <div class="currency-container" fxFlex>
+      <h2>Change currency</h2>
+    </div>
+    <div class="themes-container" fxFlex>
+      <h2>Change theme</h2>
+    </div>
+</div>

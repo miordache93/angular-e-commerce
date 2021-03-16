@@ -11,6 +11,7 @@
     "cart": "Cart",
     "login": "Login",
     "logout": "Logout",
-    "wishlist": "Wishlist"
+    "wishlist": "Wishlist",
+    "settings": "Settings"
   }
 }

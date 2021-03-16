@@ -1,20 +1,27 @@
-<div class="dashboard-component">
+<div class="dashboard-component" fxFlex fxLayout="column">
+  <h1> App title: {{'title' | translate }}</h1>
+  <div class="app-settings" fxFlex fxLayout="column" fxLayoutAlign="space-between center">
     <div>
-        <h1>{{'title' | translate }}</h1>
-        <h2>Current language: {{ language$ | async }}</h2>
-        <h2>Current theme: {{ theme$ | async }} </h2>
-        <button [ngClass]="routeAnimationsElements" (click)="changeLanguage('en')">Switch Language EN</button>
-        <button [ngClass]="routeAnimationsElements" (click)="changeLanguage('ro')">Switch Language RO</button>
-        <button [ngClass]="routeAnimationsElements" (click)="changeLanguage('fr')">Switch Language FR</button>
+      <h2>Current language: {{ language$ | async }}</h2>
+      <button mat-icon-button [ngClass]="routeAnimationsElements" (click)="changeLanguage('en')">
+        <mat-icon svgIcon="en"></mat-icon>
+      </button>
+      <button mat-icon-button [ngClass]="routeAnimationsElements" (click)="changeLanguage('ro')">
+        <mat-icon svgIcon="ro"></mat-icon>
+      </button>
+      <button mat-icon-button [ngClass]="routeAnimationsElements" (click)="changeLanguage('fr')">
+        <mat-icon svgIcon="fr"></mat-icon>
+      </button>
     </div>
-   
-    <div fxFlex fxLayoutGap="20px" fxLayout="row" fxLayoutAlign="space-between center">
-        <h1>Theme switch from dashboard component</h1>
-        <button [ngClass]="routeAnimationsElements" (click)="changeTheme('default-theme')"> Change to default theme</button>
-        <button [ngClass]="routeAnimationsElements" (click)="changeTheme('dark-theme')"> Change to dark theme</button>
-        <button [ngClass]="routeAnimationsElements" (click)="changeTheme('crazy-theme')"> Change to crazy theme </button>
-    </div>
-    <div>
-        <p  [ngClass]="routeAnimationsElements" *ngFor="let content of fillerContent">{{content}}</p>
-    </div>
+  </div>
+
+  <div fxFlex fxLayoutGap="20px" fxLayout="row" fxLayoutAlign="space-between center">
+    <h2>Current theme: {{ theme$ | async }} </h2>
+    <button [ngClass]="routeAnimationsElements" (click)="changeTheme('default-theme')"> Change to default theme</button>
+    <button [ngClass]="routeAnimationsElements" (click)="changeTheme('dark-theme')"> Change to dark theme</button>
+    <button [ngClass]="routeAnimationsElements" (click)="changeTheme('crazy-theme')"> Change to crazy theme </button>
+  </div>
+  <div>
+    <app-products-page></app-products-page>
+  </div>
 </div>

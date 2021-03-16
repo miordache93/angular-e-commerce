@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule } from '@angular/material/button';
 import { TestingComponentComponent } from './testing-component/testing-component.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 
@@ -24,6 +23,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
+
+
 
 // Custom imports
 import { DashboardComponent } from './features/dashboard/dashboard.component';
@@ -38,6 +41,10 @@ import { ThirdDashboardComponent } from './features/third-dashboard/third-dashbo
 import { FourthDashboardComponent } from './features/fourth-dashboard/fourth-dashboard.component';
 import { MenuComponent } from './shared/menu/menu.component';
 import { MainMenuComponent } from './shared/main-menu/main-menu.component';
+import { SettingsComponent } from './features/settings/settings.component';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { ProductsModule } from './features/products/products.module';
 
 
 @NgModule({
@@ -50,10 +57,14 @@ import { MainMenuComponent } from './shared/main-menu/main-menu.component';
     ThirdDashboardComponent,
     FourthDashboardComponent,
     MenuComponent,
-    MainMenuComponent
+    MainMenuComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
+    CommonModule,
+    FormsModule,
+    FlexLayoutModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     MatButtonModule,
@@ -68,11 +79,13 @@ import { MainMenuComponent } from './shared/main-menu/main-menu.component';
     LayoutModule,
     FlexLayoutModule,
     MatToolbarModule,
+    ProductsModule,
     MatSidenavModule,
     MatIconModule,
     MatListModule,
     MatCardModule,
     MatMenuModule,
+    MatSelectModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     EffectsModule.forRoot([
       SettingsEffects

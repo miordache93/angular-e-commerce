@@ -53,6 +53,11 @@ export const MENU_ITEMS = [
                 path: '/favourite'
             },
             {
+                name: 'menuItems.settings',
+                icon: 'settings',
+                path: 'settings'
+            },
+            {
                 name: 'menuItems.logout',
                 icon: 'logout',
                 path: '/logout'

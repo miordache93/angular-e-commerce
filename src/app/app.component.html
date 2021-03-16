@@ -21,6 +21,24 @@
         <a href="#" mat-list-item>Cart</a>
         <a href="#" mat-list-item>Login / Sign Up</a>
         <a href="#" mat-list-item>Logout</a>
+        <div>
+          <p>Language</p>
+          <button mat-icon-button (click)="changeLanguage('en')">
+            <mat-icon svgIcon="en"></mat-icon>
+          </button>
+          <button mat-icon-button (click)="changeLanguage('ro')">
+            <mat-icon svgIcon="ro"></mat-icon>
+          </button>
+          <button mat-icon-button (click)="changeLanguage('fr')">
+            <mat-icon svgIcon="fr"></mat-icon>
+          </button>
+        </div>
+        <div>
+          <p>Theme: {{ theme$ | async }}</p>
+          <button (click)="changeTheme('default-theme')"> Change to default theme</button>
+          <button (click)="changeTheme('dark-theme')"> Change to dark theme</button>
+          <button (click)="changeTheme('crazy-theme')"> Change to crazy theme </button>
+        </div>
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content #content cdkScrollable fxFlexFill>

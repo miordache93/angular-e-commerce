@@ -5,6 +5,8 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { ProductsRoutingModule } from './products-routing.module';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { MatCardModule } from '@angular/material/card';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatButtonModule } from '@angular/material/button';
 
 
 
@@ -13,7 +15,12 @@ import { MatCardModule } from '@angular/material/card';
   imports: [
     CommonModule,
     MatCardModule,
+    FlexLayoutModule,
+    MatButtonModule,
     ProductsRoutingModule
+  ],
+  exports: [
+    ProductsPageComponent
   ]
 })
 export class ProductsModule { }

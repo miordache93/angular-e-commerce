@@ -3,9 +3,9 @@
     <h2 [ngClass]="routeAnimationsElements">Product page filters</h2>
     <h2 [ngClass]="routeAnimationsElements">Product page cards list</h2>
     <h2>Product page paginations</h2> -->
-    <div class="products-container">
+    <div class="products-container" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center stretch">
         <!-- <h2>Products list</h2> -->
-        <div class="product-card" *ngFor="let product of products$">
+        <div  fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" class="product-card" *ngFor="let product of products$" >
             <app-product-card [product]="product"  [ngClass]="routeAnimationsElements"></app-product-card>
         </div>
     </div>

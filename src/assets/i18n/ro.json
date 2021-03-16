@@ -11,6 +11,7 @@
     "cart": "Cos",
     "login": "Authentificare / Creeaza cont",
     "logout": "Logout",
-    "wishlist": "Favorite"
+    "wishlist": "Favorite",
+    "settings": "Setari"
   }
 }

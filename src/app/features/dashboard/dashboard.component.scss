@@ -3,17 +3,18 @@
     justify-content: space-around;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 80%;
     margin: auto;
     height: 100%;
     border: 2px solid black;
-    padding-top: 64px;
+    padding: 64px 20px 20px 20px;
 
     div:first-child {
         border: 2px dashed brown;
+        width: 100%;
     }
 
     div:nth-child(2) {
         border: 2px solid green;
+        width: 100%;
     }
 }

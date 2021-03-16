@@ -15,7 +15,10 @@ export class ProductsPageComponent implements OnInit {
   constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
-    this.products$ = data.products.products.data.items;
+    this.products$ = data.products.products.data.items.map((prod: any) => {
+      prod.imageUrl = '../assets/product-image.jpg';
+      return prod;
+    });
   }
 
 }

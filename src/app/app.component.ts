@@ -6,10 +6,13 @@ import { MatToolbar } from '@angular/material/toolbar';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { selectTheme, selectSettingsLanguage } from './store/selectors/settings.selectors';
-import { actionSettingsChangeTheme } from './store/actions/settings.actions';
+import { actionSettingsChangeTheme, actionSettingsChangeLanguage } from './store/actions/settings.actions';
 import { routeAnimations } from './shared/constants/route.animations';
 import { Router } from '@angular/router';
 import { MENU_ITEMS } from './shared/constants/menu-items';
+import { MatIconRegistry } from '@angular/material/icon';
+import { DomSanitizer } from '@angular/platform-browser';
+import { LANGUAGES } from './shared/constants/languages';
 
 @Component({
   selector: 'app-root',
@@ -22,6 +25,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   theme$: Observable<string>;
   language: string;
   menuItems = MENU_ITEMS;
+  languages = LANGUAGES;
 
   @ViewChild(MatSidenavContainer, { static: true }) sidenavContainer: MatSidenavContainer;
   @ViewChild(CdkScrollable, { static: true }) scrollable: CdkScrollable;
@@ -29,9 +33,17 @@ export class AppComponent implements OnInit, AfterViewInit {
   @ViewChild('toolBara', { static: true }) toolbar: MatToolbar;
 
   constructor(private translateService: TranslateService,
+              private matIconRegistry: MatIconRegistry,
+              private domSanitizer: DomSanitizer,
               private router: Router,
               private store: Store<any>) {
     translateService.setDefaultLang('en');
+    this.languages.forEach(lang => {
+      this.matIconRegistry.addSvgIcon(
+        lang.flag,
+        this.domSanitizer.bypassSecurityTrustResourceUrl(`../assets/${lang.flag}.svg`)
+      );
+    });
   }
 
   ngOnInit(): void {
@@ -57,6 +69,20 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   navigateHome(): void {
     this.router.navigate(['/']);
-    this.sidenavContainer.close()
+    this.sidenavContainer.close();
+  }
+
+  changeLanguage(language): void {
+    this.store.dispatch(actionSettingsChangeLanguage({
+      language
+    }));
+    this.sidenavContainer.close();
+  }
+
+  changeTheme(theme): void {
+    this.store.dispatch(actionSettingsChangeTheme({
+      theme
+    }));
+    this.sidenavContainer.close();
   }
 }
