@@ -8,7 +8,7 @@ import { MatCardModule } from '@angular/material/card';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
 import { ProductsService } from './services/products.service';
-
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -18,6 +18,7 @@ import { ProductsService } from './services/products.service';
     MatCardModule,
     FlexLayoutModule,
     MatButtonModule,
+    MatProgressSpinnerModule,
     ProductsRoutingModule
   ],
   exports: [

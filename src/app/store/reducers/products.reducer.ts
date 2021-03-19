@@ -36,7 +36,7 @@ const reducer = createReducer(
     on(actionGetProductsError, (state, { error }) => ({
         ...state,
         pending: false,
-        stock: null,
+        items: [],
         error
     }))
 );
