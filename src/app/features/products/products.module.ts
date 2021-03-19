@@ -7,6 +7,7 @@ import { ProductCardComponent } from './product-card/product-card.component';
 import { MatCardModule } from '@angular/material/card';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
+import { ProductsService } from './services/products.service';
 
 
 
@@ -21,6 +22,9 @@ import { MatButtonModule } from '@angular/material/button';
   ],
   exports: [
     ProductsPageComponent
+  ],
+  providers: [
+    ProductsService
   ]
 })
 export class ProductsModule { }

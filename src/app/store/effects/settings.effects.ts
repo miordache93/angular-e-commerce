@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
-import { actionSettingsChangeAnimationsElements, actionSettingsChangeAnimationsPage, actionSettingsChangeTheme, actionSettingsChangeLanguage } from '../actions/settings.actions';
+import { actionSettingsChangeAnimationsElements,
+        actionSettingsChangeAnimationsPage,
+        actionSettingsChangeTheme,
+        actionSettingsChangeLanguage
+} from '../actions/settings.actions';
 import { merge, combineLatest, of } from 'rxjs';
 import { AnimationsService } from 'src/app/shared/services/animations.service';
 import { selectPageAnimations, selectElementsAnimations, selectSettingsState } from '../selectors/settings.selectors';
@@ -9,9 +13,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 
 import {
     tap,
-    withLatestFrom,
-    distinctUntilChanged,
-    filter
+    withLatestFrom
 } from 'rxjs/operators';
 import { State } from '../models/settings.model';
 import { LocalStorageService } from 'src/app/shared/services/local-storage.serice';

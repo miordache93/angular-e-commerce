@@ -45,6 +45,7 @@ import { SettingsComponent } from './features/settings/settings.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ProductsModule } from './features/products/products.module';
+import { ProductsEffects } from './store/effects/products.effects';
 
 
 @NgModule({
@@ -88,8 +89,9 @@ import { ProductsModule } from './features/products/products.module';
     MatSelectModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     EffectsModule.forRoot([
-      SettingsEffects
-    ])
+      SettingsEffects 
+    ]),
+    EffectsModule.forFeature([ProductsEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent],
