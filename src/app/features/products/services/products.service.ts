@@ -22,7 +22,12 @@ export class ProductsService {
             );
         } else {
             return this.http.get<Product[]>('api/products').pipe(
-                map((res: any) => res.products.data.items),
+                map((res: any) => {
+                    res.products.data.items.forEach(prod => {
+                        prod.imageUrl = '../assets/product-image.jpg';
+                    });
+                    return res.products.data.items;
+                }),
                 delay(3000)
             );
         }

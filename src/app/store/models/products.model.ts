@@ -8,6 +8,7 @@ export interface Product {
     url: string;
     category: string;
     subcategory: string;
+    imageUrl?: string;
 }
 
 
