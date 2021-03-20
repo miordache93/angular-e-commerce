@@ -25,6 +25,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
 
 
 
@@ -85,11 +86,12 @@ import { ProductsEffects } from './store/effects/products.effects';
     MatIconModule,
     MatListModule,
     MatCardModule,
+    MatInputModule,
     MatMenuModule,
     MatSelectModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     EffectsModule.forRoot([
-      SettingsEffects 
+      SettingsEffects
     ]),
     EffectsModule.forFeature([ProductsEffects]),
   ],

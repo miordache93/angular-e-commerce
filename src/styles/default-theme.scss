@@ -14,6 +14,7 @@
 // hue. Available color palettes: https://material.io/design/color/
 $angular-e-commerce-primary: mat-palette($mat-indigo);
 $angular-e-commerce-accent: mat-palette($mat-pink, A200, A100, A400);
+$angular-e-commerce-accent2: mat-palette($mat-deep-orange);
 
 // The warn palette is optional (defaults to red).
 $angular-e-commerce-warn: mat-palette($mat-red);
@@ -25,6 +26,7 @@ $angular-e-commerce-theme: mat-light-theme((
     primary: $angular-e-commerce-primary,
     accent: $angular-e-commerce-accent,
     warn: $angular-e-commerce-warn,
+    warn2: $angular-e-commerce-accent2
   )
 ));
 

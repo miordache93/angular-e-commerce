@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ROUTE_ANIMATIONS_ELEMENTS } from 'src/app/shared/constants/route.animations';
 
 @Component({
   selector: 'app-product-card',
@@ -7,6 +8,8 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ProductCardComponent implements OnInit {
   @Input() product: any;
+  routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
+
   constructor() { }
 
   ngOnInit(): void {

@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 import { selectTheme, selectSettingsLanguage } from './store/selectors/settings.selectors';
 import { actionSettingsChangeTheme, actionSettingsChangeLanguage } from './store/actions/settings.actions';
 import { routeAnimations } from './shared/constants/route.animations';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { MENU_ITEMS } from './shared/constants/menu-items';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -33,10 +33,10 @@ export class AppComponent implements OnInit, AfterViewInit {
   @ViewChild('toolBara', { static: true }) toolbar: MatToolbar;
 
   constructor(private translateService: TranslateService,
-              private matIconRegistry: MatIconRegistry,
-              private domSanitizer: DomSanitizer,
-              private router: Router,
-              private store: Store<any>) {
+    private matIconRegistry: MatIconRegistry,
+    private domSanitizer: DomSanitizer,
+    private router: Router,
+    private store: Store<any>) {
     translateService.setDefaultLang('en');
     this.languages.forEach(lang => {
       this.matIconRegistry.addSvgIcon(
@@ -51,6 +51,13 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.store.pipe(select(selectSettingsLanguage)).subscribe(lang => {
       this.translateService.use(lang);
       this.language = lang;
+    });
+
+    this.router.events.subscribe((evt) => {
+      if (!(evt instanceof NavigationEnd)) {
+        return;
+      }
+      window.scrollTo(0, 0);
     });
   }
 
@@ -84,5 +91,9 @@ export class AppComponent implements OnInit, AfterViewInit {
       theme
     }));
     this.sidenavContainer.close();
+  }
+
+  onActivate(event): void {
+    window.scroll(0, 0);
   }
 }

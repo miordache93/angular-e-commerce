@@ -1,4 +1,4 @@
-<div class="productsPage-component">
+<div class="productsPage-component" fxFlex fxLayout="column" fxLayoutAlign="center center">
     <!-- <h1>Product page title</h1>
     <h2 [ngClass]="routeAnimationsElements">Product page filters</h2>
     <h2 [ngClass]="routeAnimationsElements">Product page cards list</h2>
@@ -8,8 +8,10 @@
         <p> {{ filters$ | async | json }}</p>
     </div>
     <div>
-        <h2>Input search</h2>
-        <input #searchProductsInput type="text" />
+        <mat-form-field class="example-form-field">
+            <mat-label>Input search  </mat-label>
+        <input matInput #searchProductsInput type="text" />
+        </mat-form-field>
     </div>
     <div *ngIf="isLoading" fxFlex fxLayout="column" fxLayoutAlign="center center">
         <h1>Products are loading...</h1>

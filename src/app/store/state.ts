@@ -1,6 +1,6 @@
 import { SettingsState } from './models/settings.model';
 import { settingsReducer } from './reducers/settings.reducer';
-import { ActionReducerMap, MetaReducer } from '@ngrx/store';
+import { ActionReducerMap, MetaReducer, createFeatureSelector } from '@ngrx/store';
 import { initStateFromLocalStorage } from './reducers/meta.reducers';
 
 import { routerReducer, RouterReducerState } from '@ngrx/router-store';
@@ -27,9 +27,10 @@ if (!environment.production) {
   }
 }
 
-// export const selectAuthState = createFeatureSelector<AppState, AuthState>(
-//     'auth'
-//   );
+export const selectRouterState = createFeatureSelector<
+  AppState,
+  RouterReducerState<RouterStateUrl>
+>('router');
 
 export interface AppState {
   settings: SettingsState;

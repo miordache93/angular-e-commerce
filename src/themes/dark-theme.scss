@@ -1,10 +1,12 @@
 $dark-primary: mat-palette($mat-blue-grey);
 $dark-accent:  mat-palette($mat-amber, A200, A100, A400);
 $dark-warn:    mat-palette($mat-deep-orange);
+$dark-warn2:    mat-palette($mat-deep-orange, 400);
 $dark-theme:   mat-dark-theme((
   color: (
     primary: $dark-primary,
     accent: $dark-accent,
-    warn: $dark-warn,
+    accent2: $dark-warn2,
+    warn: $dark-warn
   )
 ));

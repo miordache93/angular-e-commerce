@@ -9,6 +9,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
 import { ProductsService } from './services/products.service';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatInputModule } from '@angular/material/input';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatCardModule,
     FlexLayoutModule,
     MatButtonModule,
+    MatInputModule,
     MatProgressSpinnerModule,
     ProductsRoutingModule
   ],
