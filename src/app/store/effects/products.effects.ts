@@ -6,14 +6,14 @@ import { catchError, debounceTime, map, switchMap, tap, debounce } from 'rxjs/op
 
 
 import { ProductsService } from 'src/app/features/products/services/products.service';
-import { actionGetProducts, actionGetProductsSuccess, actionGetProductsError } from '../actions/products.actions';
+import { actionGetProducts, actionGetProductsSuccess, actionGetProductsError, actionProductsFilters } from '../actions/products.actions';
 
 
 @Injectable()
 export class ProductsEffects {
   getProducts = createEffect(() =>
     this.actions$.pipe(
-      ofType(actionGetProducts),
+      ofType(actionGetProducts, actionProductsFilters),
       switchMap((action) =>
         this.service.getProducts().pipe(
           map((items) => actionGetProductsSuccess({ items })),

@@ -1,6 +1,6 @@
 import { createReducer, on, Action } from '@ngrx/store';
 import { ProductsState } from '../models/products.model';
-import { actionGetProducts, actionGetProductsSuccess, actionGetProductsError } from '../actions/products.actions';
+import { actionGetProducts, actionGetProductsSuccess, actionGetProductsError, actionProductsFilters } from '../actions/products.actions';
 
 export const defaultFilters = {
     searchText: '',
@@ -38,6 +38,11 @@ const reducer = createReducer(
         pending: false,
         items: [],
         error
+    })),
+    on(actionProductsFilters, (state, { filters }) => ({
+        ...state,
+        pending: true,
+        filters
     }))
 );
 // tslint:disable-next-line:typedef

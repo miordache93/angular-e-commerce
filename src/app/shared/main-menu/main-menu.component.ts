@@ -10,11 +10,11 @@ export class MainMenuComponent implements OnInit, OnChanges {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.menuItems);
+    // console.log(this.menuItems);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
+    // console.log(changes);
   }
 
 }

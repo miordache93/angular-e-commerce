@@ -3,6 +3,14 @@
     <h2 [ngClass]="routeAnimationsElements">Product page filters</h2>
     <h2 [ngClass]="routeAnimationsElements">Product page cards list</h2>
     <h2>Product page paginations</h2> -->
+    <div>
+        <h1>Filters</h1>
+        <p> {{ filters$ | async | json }}</p>
+    </div>
+    <div>
+        <h2>Input search</h2>
+        <input #searchProductsInput type="text" />
+    </div>
     <div *ngIf="isLoading" fxFlex fxLayout="column" fxLayoutAlign="center center">
         <h1>Products are loading...</h1>
         <mat-spinner></mat-spinner>

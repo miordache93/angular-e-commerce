@@ -3,7 +3,7 @@ import { ProductsFilters, Product } from './../models/products.model';
 
 export const actionProductsFilters = createAction(
     '[Products] Filters',
-    props<{ filter: ProductsFilters }>()
+    props<{ filters: ProductsFilters }>()
 );
 
 export const actionGetProducts = createAction(
