@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DashboardComponent,
-         SecondDashboardComponent,
-         ThirdDashboardComponent,
-         FourthDashboardComponent,
-         SettingsComponent } from './features/';
+import {
+  DashboardComponent,
+  SecondDashboardComponent,
+  ThirdDashboardComponent,
+  FourthDashboardComponent,
+  SettingsComponent
+} from './features/';
 
 const routes: Routes = [
   {
@@ -38,7 +40,12 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: 'top' })],
+  imports: [RouterModule.forRoot(routes,
+    {
+      useHash: true,
+      scrollPositionRestoration: 'enabled',
+      relativeLinkResolution: 'legacy'
+    })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

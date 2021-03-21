@@ -19,8 +19,8 @@
         <a routerLink="/" mat-list-item>Home</a>
         <a [routerLink]="['/products']" mat-list-item>Products</a>
         <a href="#" mat-list-item>Cart</a>
-        <a href="#" mat-list-item (click)="onLoginClick()">Login / Sign Up</a>
-        <a href="#" mat-list-item (click)="onLogoutClick()">Logout</a>
+        <a href="#" mat-list-item (click)="onLoginClick()" *ngIf="!isAuthenticated">Login / Sign Up</a>
+        <a href="#" mat-list-item (click)="onLogoutClick()" *ngIf="isAuthenticated">Logout</a>
         <div>
           <p>Language</p>
           <button mat-icon-button (click)="changeLanguage('en')">

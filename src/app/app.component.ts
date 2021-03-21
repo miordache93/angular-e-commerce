@@ -14,6 +14,7 @@ import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { LANGUAGES } from './shared/constants/languages';
 import { authLogin, authLogout } from './store/actions';
+import { selectAuth, selectIsAuthenticated } from './store/selectors/auth.selectors';
 
 @Component({
   selector: 'app-root',
@@ -27,6 +28,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   language: string;
   menuItems = MENU_ITEMS;
   languages = LANGUAGES;
+  isAuthenticated: boolean;
 
   @ViewChild(MatSidenavContainer, { static: true }) sidenavContainer: MatSidenavContainer;
   @ViewChild(CdkScrollable, { static: true }) scrollable: CdkScrollable;
@@ -52,6 +54,10 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.store.pipe(select(selectSettingsLanguage)).subscribe(lang => {
       this.translateService.use(lang);
       this.language = lang;
+    });
+
+    this.store.select(selectIsAuthenticated).subscribe(res => {
+      this.isAuthenticated = res;
     });
 
     this.router.events.subscribe((evt) => {

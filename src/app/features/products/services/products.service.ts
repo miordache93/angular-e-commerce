@@ -17,8 +17,13 @@ export class ProductsService {
                 tap(res => {
                     console.log(res);
                 }),
-                map((res: any) => res.products.products.data.items),
-                delay(3000)
+                map((res: any) => {
+                    res.products.data.items.forEach(prod => {
+                        prod.imageUrl = '../assets/product-image.jpg';
+                    });
+                    return res.products.data.items;
+                }),
+                delay(2500)
             );
         } else {
             return this.http.get<Product[]>('api/products').pipe(
