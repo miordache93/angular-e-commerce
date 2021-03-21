@@ -15,13 +15,13 @@ export class ProductsService {
         if (environment.production) {
             return of(DATA).pipe(
                 tap(res => {
-                    console.log(res);
+                    console.log('tap', res);
                 }),
                 map((res: any) => {
-                    res.products.data.items.forEach(prod => {
+                    res.products.products.data.items.forEach(prod => {
                         prod.imageUrl = '../assets/product-image.jpg';
                     });
-                    return res.products.data.items;
+                    return res.products.products.data.items;
                 }),
                 delay(2500)
             );
