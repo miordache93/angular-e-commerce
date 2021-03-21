@@ -15,14 +15,9 @@ export class ProductsService {
         if (environment.production) {
             return of(DATA).pipe(
                 tap(res => {
-                    console.log('tap', res);
+                    console.log(res);
                 }),
-                map((res: any) => {
-                    res.products.products.data.items.forEach(prod => {
-                        prod.imageUrl = '../assets/product-image.jpg';
-                    });
-                    return res.products.products.data.items;
-                }),
+                map((res: any) => res.products.products.data.items),
                 delay(2500)
             );
         } else {
