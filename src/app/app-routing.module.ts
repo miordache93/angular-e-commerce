@@ -3,8 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent,
          SecondDashboardComponent,
          ThirdDashboardComponent,
-         FourthDashboardComponent } from './features/';
-import { SettingsComponent } from './features/settings/settings.component';
+         FourthDashboardComponent,
+         SettingsComponent } from './features/';
 
 const routes: Routes = [
   {
@@ -16,7 +16,7 @@ const routes: Routes = [
     component: SecondDashboardComponent
   },
   {
-    path: 'third-dashboard', 
+    path: 'third-dashboard',
     component: ThirdDashboardComponent
   },
   {
@@ -30,6 +30,10 @@ const routes: Routes = [
   {
     path: 'products',
     loadChildren: () => import('./features/products/products.module').then(m => m.ProductsModule)
+  },
+  {
+    path: 'cart',
+    loadChildren: () => import('./features/cart/cart.module').then(m => m.CartModule)
   }
 ];
 

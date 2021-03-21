@@ -4,9 +4,9 @@ import { actionSettingsChangeLanguage,
         actionSettingsChangeTheme,
         actionSettingsChangeAnimationsPage,
         actionSettingsChangeAnimationsElements
-} from '../actions/settings.actions';
+} from '../actions/';
 
-export const initialState: SettingsState = {
+export const initialSettinsState: SettingsState = {
     language: 'en',
     theme: 'default-theme',
     elementsAnimations: true,
@@ -15,7 +15,7 @@ export const initialState: SettingsState = {
 };
 
 const reducer = createReducer(
-    initialState,
+    initialSettinsState,
     on(
         actionSettingsChangeLanguage,
         actionSettingsChangeTheme,

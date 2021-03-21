@@ -1,12 +1,16 @@
 import { Injectable } from '@angular/core';
+
 import { Actions, createEffect, ofType } from '@ngrx/effects';
+
 import { of } from 'rxjs';
-import { catchError, debounceTime, map, switchMap, tap, debounce } from 'rxjs/operators';
-
-
+import { catchError, map, switchMap } from 'rxjs/operators';
 
 import { ProductsService } from 'src/app/features/products/services/products.service';
-import { actionGetProducts, actionGetProductsSuccess, actionGetProductsError, actionProductsFilters } from '../actions/products.actions';
+import { actionGetProducts,
+         actionGetProductsSuccess,
+         actionGetProductsError,
+         actionProductsFilters
+} from '../actions';
 
 
 @Injectable()

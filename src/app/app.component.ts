@@ -13,6 +13,7 @@ import { MENU_ITEMS } from './shared/constants/menu-items';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { LANGUAGES } from './shared/constants/languages';
+import { authLogin, authLogout } from './store/actions';
 
 @Component({
   selector: 'app-root',
@@ -95,5 +96,13 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   onActivate(event): void {
     window.scroll(0, 0);
+  }
+
+  onLoginClick(): void {
+    this.store.dispatch(authLogin());
+  }
+
+  onLogoutClick(): void {
+    this.store.dispatch(authLogout());
   }
 }

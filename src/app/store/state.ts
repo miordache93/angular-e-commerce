@@ -1,20 +1,26 @@
-import { SettingsState } from './models/settings.model';
-import { settingsReducer } from './reducers/settings.reducer';
+// ngrx store
 import { ActionReducerMap, MetaReducer, createFeatureSelector } from '@ngrx/store';
-import { initStateFromLocalStorage } from './reducers/meta.reducers';
-
 import { routerReducer, RouterReducerState } from '@ngrx/router-store';
-import { RouterStateUrl } from './models/router.model';
-import { debug } from './reducers/debug.reducer';
 
+// custom imports
 import { environment } from '../../environments/environment';
-import { productsReducer } from './reducers/products.reducer';
-import { ProductsState } from './models/products.model';
+import { authReducer,
+         debug,
+         productsReducer,
+         initStateFromLocalStorage,
+         settingsReducer
+} from './reducers/';
+import { ProductsState,
+         AuthState,
+         SettingsState,
+         RouterStateUrl
+} from './models/';
 
 export const reducers: ActionReducerMap<AppState> = {
   settings: settingsReducer,
   products: productsReducer,
-  router: routerReducer
+  router: routerReducer,
+  auth: authReducer
 };
 
 export const metaReducers: MetaReducer<AppState>[] = [
@@ -32,9 +38,14 @@ export const selectRouterState = createFeatureSelector<
   RouterReducerState<RouterStateUrl>
 >('router');
 
+export const selectAuthState = createFeatureSelector<AppState, AuthState>(
+  'auth'
+);
+
 export interface AppState {
   settings: SettingsState;
   products: ProductsState;
+  auth: AuthState;
   router: RouterReducerState<RouterStateUrl>;
 }
 

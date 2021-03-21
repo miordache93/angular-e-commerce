@@ -19,8 +19,8 @@
         <a routerLink="/" mat-list-item>Home</a>
         <a [routerLink]="['/products']" mat-list-item>Products</a>
         <a href="#" mat-list-item>Cart</a>
-        <a href="#" mat-list-item>Login / Sign Up</a>
-        <a href="#" mat-list-item>Logout</a>
+        <a href="#" mat-list-item (click)="onLoginClick()">Login / Sign Up</a>
+        <a href="#" mat-list-item (click)="onLogoutClick()">Logout</a>
         <div>
           <p>Language</p>
           <button mat-icon-button (click)="changeLanguage('en')">
@@ -35,9 +35,9 @@
         </div>
         <div>
           <p>Theme: {{ theme$ | async }}</p>
-          <button (click)="changeTheme('default-theme')"> Change to default theme</button>
-          <button (click)="changeTheme('dark-theme')"> Change to dark theme</button>
-          <button (click)="changeTheme('crazy-theme')"> Change to crazy theme </button>
+          <button mat-flat-button color="primary" (click)="changeTheme('default-theme')"> Change to default theme</button>
+          <button mat-flat-button color="warn" (click)="changeTheme('dark-theme')"> Change to dark theme</button>
+          <button mat-flat-button color="accent" (click)="changeTheme('crazy-theme')"> Change to crazy theme </button>
         </div>
       </mat-nav-list>
     </mat-sidenav>

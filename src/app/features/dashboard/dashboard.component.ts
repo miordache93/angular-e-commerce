@@ -30,7 +30,6 @@ export class DashboardComponent implements OnInit {
   }
 
   changeLanguage(language): void {
-    // this.translateService.use(lang);
     this.store.dispatch(actionSettingsChangeLanguage({
       language
     }));

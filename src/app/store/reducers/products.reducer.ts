@@ -1,6 +1,10 @@
 import { createReducer, on, Action } from '@ngrx/store';
 import { ProductsState } from '../models/products.model';
-import { actionGetProducts, actionGetProductsSuccess, actionGetProductsError, actionProductsFilters } from '../actions/products.actions';
+import { actionGetProducts,
+         actionGetProductsSuccess,
+         actionGetProductsError,
+         actionProductsFilters
+} from '../actions/products.actions';
 
 export const defaultFilters = {
     searchText: '',
@@ -12,7 +16,7 @@ export const defaultFilters = {
     }
 };
 
-export const initialState: ProductsState = {
+export const initialProductsState: ProductsState = {
     items: [],
     error: false,
     pending: false,
@@ -20,7 +24,7 @@ export const initialState: ProductsState = {
 };
 
 const reducer = createReducer(
-    initialState,
+    initialProductsState,
     on(actionGetProducts, (state) => ({
         ...state,
         items: [],

@@ -65,7 +65,8 @@ export const MENU_ITEMS = [
             {
                 name: 'menuItems.login',
                 icon: 'login',
-                path: '/logout'
+                path: '/logout',
+                method: (fn) => fn
             },
         ]
     }
