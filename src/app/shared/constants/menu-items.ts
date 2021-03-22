@@ -1,4 +1,4 @@
-export const MENU_ITEMS = [
+export const MENU_ITEMS: MenuItems[] = [
     {
         name: 'menuItems.home',
         icon: 'home',
@@ -6,24 +6,22 @@ export const MENU_ITEMS = [
             {
                 name: 'menuItems.home',
                 icon: 'home',
-                path: '/'
+                path: '/',
+                methods: ['test']
             },
             {
                 name: 'menuItems.home2',
                 icon: 'home',
-
                 path: '/second-dashboard'
             },
             {
                 name: 'menuItems.home3',
                 icon: 'home',
-
                 path: '/third-dashboard'
             },
             {
                 name: 'menuItems.home4',
                 icon: 'home',
-
                 path: '/fourth-dashboard'
             }
         ]
@@ -60,14 +58,26 @@ export const MENU_ITEMS = [
             {
                 name: 'menuItems.logout',
                 icon: 'logout',
-                path: '/logout'
+                path: '/logout',
+                requireAuth: true
             },
             {
                 name: 'menuItems.login',
                 icon: 'login',
-                path: '/logout',
-                method: (fn) => fn
+                path: '/authenticate',
+                requireAuth: false,
+                methods: ['login']
             },
         ]
     }
 ];
+
+interface MenuItems {
+    name: string;
+    icon: string;
+    path?: string;
+    children?: any;
+    methods?: string[];
+    onClick?: () => void;
+}
+

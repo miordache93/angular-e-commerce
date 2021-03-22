@@ -14,7 +14,7 @@ import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { LANGUAGES } from './shared/constants/languages';
 import { authLogin, authLogout } from './store/actions';
-import { selectAuth, selectIsAuthenticated } from './store/selectors/auth.selectors';
+import { selectIsAuthenticated } from './store/selectors/auth.selectors';
 
 @Component({
   selector: 'app-root',
@@ -29,6 +29,10 @@ export class AppComponent implements OnInit, AfterViewInit {
   menuItems = MENU_ITEMS;
   languages = LANGUAGES;
   isAuthenticated: boolean;
+  menuItemsMap = {
+    login: this.onLoginClick.bind(this),
+    test: this.onHomeClick.bind(this)
+  };
 
   @ViewChild(MatSidenavContainer, { static: true }) sidenavContainer: MatSidenavContainer;
   @ViewChild(CdkScrollable, { static: true }) scrollable: CdkScrollable;
@@ -36,10 +40,10 @@ export class AppComponent implements OnInit, AfterViewInit {
   @ViewChild('toolBara', { static: true }) toolbar: MatToolbar;
 
   constructor(private translateService: TranslateService,
-    private matIconRegistry: MatIconRegistry,
-    private domSanitizer: DomSanitizer,
-    private router: Router,
-    private store: Store<any>) {
+              private matIconRegistry: MatIconRegistry,
+              private domSanitizer: DomSanitizer,
+              private router: Router,
+              private store: Store<any>) {
     translateService.setDefaultLang('en');
     this.languages.forEach(lang => {
       this.matIconRegistry.addSvgIcon(
@@ -50,6 +54,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
+    this.traverseMenuItems(this.setupOnClickEvents.bind(this));
     this.theme$ = this.store.pipe(select(selectTheme));
     this.store.pipe(select(selectSettingsLanguage)).subscribe(lang => {
       this.translateService.use(lang);
@@ -58,6 +63,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
     this.store.select(selectIsAuthenticated).subscribe(res => {
       this.isAuthenticated = res;
+      this.traverseMenuItems(this.setupHiddenProp.bind(this));
     });
 
     this.router.events.subscribe((evt) => {
@@ -79,6 +85,40 @@ export class AppComponent implements OnInit, AfterViewInit {
         this.toolbar._elementRef.nativeElement.classList.remove('sticky');
       }
     });
+  }
+
+  setupOnClickEvents(item): void {
+    if (item.methods) {
+      for (const method of item.methods) {
+        item.onClick = this.menuItemsMap[method];
+      }
+    }
+  }
+
+  setupHiddenProp(item): void {
+    item.hidden = false;
+    if (this.isAuthenticated) {
+      if (item.path === '/authenticate') {
+        item.hidden = true;
+      }
+    } else {
+      if (item.path === '/logout') {
+        item.hidden = true;
+      }
+    }
+  }
+
+  traverseMenuItems(updateFn): void {
+    const traverse = (menuItems) => {
+      menuItems.forEach(item => {
+        if (!item.children) {
+          updateFn(item);
+        } else {
+          traverse(item.children);
+        }
+      });
+    };
+    traverse(this.menuItems);
   }
 
   navigateHome(): void {
@@ -110,5 +150,9 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   onLogoutClick(): void {
     this.store.dispatch(authLogout());
+  }
+
+  onHomeClick(): void {
+    console.log('Home Clicked');
   }
 }

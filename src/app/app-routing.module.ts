@@ -7,6 +7,7 @@ import {
   FourthDashboardComponent,
   SettingsComponent
 } from './features/';
+import { TestComponent } from './features/test/test.component';
 
 const routes: Routes = [
   {
@@ -28,6 +29,10 @@ const routes: Routes = [
   {
     path: 'settings',
     component: SettingsComponent
+  },
+  {
+    path: 'authenticate',
+    component: TestComponent
   },
   {
     path: 'products',

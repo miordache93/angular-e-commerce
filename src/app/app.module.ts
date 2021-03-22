@@ -50,6 +50,7 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 
 // env
 import { environment } from 'src/environments/environment';
+import { TestComponent } from './features/test/test.component';
 
 
 @NgModule({
@@ -63,7 +64,8 @@ import { environment } from 'src/environments/environment';
     FourthDashboardComponent,
     MenuComponent,
     MainMenuComponent,
-    SettingsComponent
+    SettingsComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,
