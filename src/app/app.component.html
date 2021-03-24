@@ -1,13 +1,16 @@
 <div class="app-component" style="height: 100vh;" [class]="'theme-wrapper ' + (theme$ | async)">
-  <mat-toolbar #toolBara class="app-component__toolbar fixed" color="primary">
+  <mat-toolbar #toolBara class="app-component__toolbar fixed" [class.mobile-view]="mobileView && enableBack" color="primary">
     <mat-toolbar-row fxLayoutAlign="space-between center">
-      <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
-        <mat-icon>menu</mat-icon>
+      <button mat-icon-button color="primary" (click)="toggleSidenav()" fxShow="true" fxHide.gt-sm>
+        <mat-icon *ngIf="!enableBack">menu</mat-icon>
+        <mat-icon *ngIf="enableBack">navigate_before</mat-icon>
       </button>
-      <span (click)="navigateHome()"  fxHide fxShow.gt-xs> {{ title }} </span>
-      <span class="menu-spacer"></span>
-      <div>
-        <app-main-menu [menuItems]="menuItems"></app-main-menu>
+      <div class="app-component-navigation__container">
+        <span (click)="navigateHome()"  fxHide fxShow.gt-xs> {{ title }} </span>
+        <span class="menu-spacer"></span>
+        <div>
+          <app-main-menu [menuItems]="menuItems"></app-main-menu>
+        </div>
       </div>
     </mat-toolbar-row>
   </mat-toolbar>

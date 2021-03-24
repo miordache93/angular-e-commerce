@@ -5,13 +5,15 @@
 
 @import './themes/default-theme';
 @import './themes/dark-theme';
-@import './themes/crazy-theme';
+@import './themes/crazy-theme'; 
 
+@import './app/app.component.theme';
 @import './app/shared/components/footer/footer.component.theme';
 
 
 @mixin custom-components-theme($theme) {
   @include app-footer-component-theme($theme);
+  @include app-component-theme($theme);
 } 
 
 .default-theme {

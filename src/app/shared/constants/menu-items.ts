@@ -29,12 +29,14 @@ export const MENU_ITEMS: MenuItems[] = [
     {
         name: 'menuItems.products',
         icon: 'storefront',
-        path: '/products'
+        path: '/products',
+        methods: []
     },
     {
         name: 'menuItems.cart',
         icon: 'shopping_cart',
-        path: '/cart'
+        path: '/cart',
+        methods: []
     },
     {
         name: 'menuItems.user',

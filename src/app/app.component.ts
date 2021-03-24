@@ -5,6 +5,7 @@ import { CdkScrollable } from '@angular/cdk/scrolling';
 import { MatToolbar } from '@angular/material/toolbar';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { Location } from '@angular/common';
 import { selectTheme, selectSettingsLanguage } from './store/selectors/settings.selectors';
 import { actionSettingsChangeTheme, actionSettingsChangeLanguage } from './store/actions/settings.actions';
 import { routeAnimations } from './shared/constants/route.animations';
@@ -15,6 +16,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { LANGUAGES } from './shared/constants/languages';
 import { authLogin, authLogout } from './store/actions';
 import { selectIsAuthenticated } from './store/selectors/auth.selectors';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-root',
@@ -33,15 +35,20 @@ export class AppComponent implements OnInit, AfterViewInit {
     login: this.onLoginClick.bind(this),
     test: this.onHomeClick.bind(this)
   };
+  mobileView = false;
+  enableBack = false;
 
   @ViewChild(MatSidenavContainer, { static: true }) sidenavContainer: MatSidenavContainer;
   @ViewChild(CdkScrollable, { static: true }) scrollable: CdkScrollable;
   @ViewChild(MatSidenavContent, { static: true }) content: MatSidenavContent;
   @ViewChild('toolBara', { static: true }) toolbar: MatToolbar;
+  @ViewChild('sidenav', { static: true }) sidenav: any;
 
   constructor(private translateService: TranslateService,
               private matIconRegistry: MatIconRegistry,
               private domSanitizer: DomSanitizer,
+              private location: Location,
+              private breakpointObserver: BreakpointObserver,
               private router: Router,
               private store: Store<any>) {
     translateService.setDefaultLang('en');
@@ -50,6 +57,27 @@ export class AppComponent implements OnInit, AfterViewInit {
         lang.flag,
         this.domSanitizer.bypassSecurityTrustResourceUrl(`../assets/${lang.flag}.svg`)
       );
+    });
+    router.events.subscribe((val) => {
+      if (val instanceof NavigationEnd) {
+        const routesCanGoBack = ['/cart']; // change logic asap
+        if (routesCanGoBack.indexOf(val.url) > -1) {
+          this.enableBack = true;
+        } else {
+          this.enableBack = false;
+        }
+      }
+    });
+
+    breakpointObserver.observe([
+      Breakpoints.XSmall,
+      Breakpoints.Small
+    ]).subscribe(result => {
+      if (result.matches) {
+        this.mobileView = true;
+      } else {
+        this.mobileView = false;
+      }
     });
   }
 
@@ -119,6 +147,14 @@ export class AppComponent implements OnInit, AfterViewInit {
       });
     };
     traverse(this.menuItems);
+  }
+
+  toggleSidenav(): void {
+    if (!this.enableBack) {
+      this.sidenav.toggle();
+    } else {
+      this.location.back();
+    }
   }
 
   navigateHome(): void {

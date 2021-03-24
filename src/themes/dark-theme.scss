@@ -1,12 +1,21 @@
-$dark-primary: mat-palette($mat-blue-grey);
-$dark-accent:  mat-palette($mat-amber, A200, A100, A400);
-$dark-warn:    mat-palette($mat-deep-orange);
-$dark-warn2:    mat-palette($mat-deep-orange, 400);
+@import '../themes/palettes/primary-palette.scss';
+// @import '../themes/palettes/accent-palette.scss';
+@import '../themes/palettes/warn-palette.scss';
+
+// Define theme
+$dark-primary: mat-palette($dark-primary-palette);
+$dark-accent:  mat-palette($mat-amber);
+$dark-warn:    mat-palette($dark-warn-palette);
+
+
+$custom-variables: (background-of-main: #616161);
+
 $dark-theme:   mat-dark-theme((
   color: (
     primary: $dark-primary,
     accent: $dark-accent,
-    accent2: $dark-warn2,
     warn: $dark-warn
   )
 ));
+
+$dark-theme: map_merge($dark-theme, $custom-variables);

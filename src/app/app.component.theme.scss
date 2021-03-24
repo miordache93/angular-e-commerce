@@ -1,15 +1,15 @@
 @import '~@angular/material/theming';
 
 
-@mixin app-footer-component-theme($theme) {
+@mixin app-component-theme($theme) {
     $primary: map-get($theme, primary);
     $accent: map-get($theme, accent);
     $foreground: map-get($theme, foreground);
-    $background: map-get($theme, background);
+    $background: map-get($theme, background-of-main);
 
 
-    .footer-component {
+    mat-sidenav-container {
         color: mat-color($foreground, text);
-        background-color: mat-color($primary);
+        background-color: $background !important;
     }
-}
+} 
