@@ -1,5 +1,5 @@
 import { createSelector, createFeatureSelector } from '@ngrx/store';
-import { AppState } from '../state';
+import { AppState, selectRouterState } from '../state';
 import { ProductsState, Product } from '../models/products.model';
 
 export const selectProductsState = createFeatureSelector<
@@ -26,6 +26,16 @@ export const selectFilteredProducts = createSelector(
     return filterProducts(items, filters);
   }
 );
+
+export const selectSelectedProduct = createSelector(
+  selectProductItems,
+  selectRouterState,
+  (items, params: any) => {
+    console.log('selector', params);
+    return params && items.find(item => item.id === params.state.root.firstChild.params.id);
+  }
+);
+
 
 export const isLoading = createSelector(
   selectProductsState,

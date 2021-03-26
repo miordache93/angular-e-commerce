@@ -10,7 +10,7 @@
       <div class="app-component-navigation__container" fxFlex fxLayoutAlign="space-between center">
         <span (click)="navigateHome()"  fxHide fxShow.gt-xs> {{ title }} </span>
         <span class="menu-spacer"></span>
-        <div *ngIf="!enableBack">
+        <div>
           <app-main-menu [menuItems]="menuItems"></app-main-menu>
         </div>
       </div>

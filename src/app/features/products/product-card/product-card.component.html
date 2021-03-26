@@ -1,4 +1,4 @@
-<mat-card class="example-card mat-elevation-z4" [ngClass]="routeAnimationsElements">
+<mat-card (click)="viewProduct(product)" class="example-card mat-elevation-z4" [ngClass]="routeAnimationsElements">
   <mat-card-header>
     <!-- <div mat-card-avatar class="example-header-image"></div> -->
     <mat-card-title>{{ product.name }}</mat-card-title>

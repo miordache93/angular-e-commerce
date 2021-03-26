@@ -60,7 +60,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     });
     router.events.subscribe((val) => {
       if (val instanceof NavigationEnd) {
-        const routesCanGoBack = ['/cart']; // change logic asap
+        const routesCanGoBack = ['/cart', '/product-details']; // change logic asap
         if (routesCanGoBack.indexOf(val.url) > -1) {
           this.enableBack = true;
         } else {

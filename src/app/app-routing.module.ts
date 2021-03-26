@@ -8,6 +8,7 @@ import {
   SettingsComponent
 } from './features/';
 import { TestComponent } from './features/test/test.component';
+import { ProductDetailsComponent } from './features/products/product-details/product-details.component';
 
 const routes: Routes = [
   {
@@ -29,6 +30,10 @@ const routes: Routes = [
   {
     path: 'settings',
     component: SettingsComponent
+  },
+  {
+    path: 'product-details/:id',
+    component: ProductDetailsComponent
   },
   {
     path: 'authenticate',
