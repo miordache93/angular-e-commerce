@@ -6,19 +6,16 @@ import { routerReducer, RouterReducerState } from '@ngrx/router-store';
 import { environment } from '../../environments/environment';
 import { authReducer,
          debug,
-         productsReducer,
          initStateFromLocalStorage,
          settingsReducer
 } from './reducers/';
-import { ProductsState,
-         AuthState,
+import { AuthState,
          SettingsState,
          RouterStateUrl
 } from './models/';
 
 export const reducers: ActionReducerMap<AppState> = {
   settings: settingsReducer,
-  products: productsReducer,
   router: routerReducer,
   auth: authReducer
 };
@@ -44,7 +41,6 @@ export const selectAuthState = createFeatureSelector<AppState, AuthState>(
 
 export interface AppState {
   settings: SettingsState;
-  products: ProductsState;
   auth: AuthState;
   router: RouterReducerState<RouterStateUrl>;
 }

@@ -22,11 +22,5 @@ export interface ProductsFilters {
     };
 }
 
-export interface ProductsState {
-    items: Product[];
-    pending: boolean;
-    error: boolean;
-    filters: ProductsFilters;
-}
 
 

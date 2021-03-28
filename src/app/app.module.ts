@@ -103,8 +103,7 @@ import { TestComponent } from './features/test/test.component';
       }),
     EffectsModule.forRoot([
       SettingsEffects
-    ]),
-    EffectsModule.forFeature([ProductsEffects]),
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent],

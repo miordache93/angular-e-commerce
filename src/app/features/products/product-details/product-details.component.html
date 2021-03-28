@@ -1,3 +1,14 @@
-<div class="product-details-component">
-    <h1>{{ selectedProduct.name }}</h1>
+<div class="product-details-component" fxFlex fxLayout="column" fxLayoutAlign="center center" >
+    <div *ngIf="!isLoading" class="product-details__container">
+        <h1>{{ selectedProduct?.name }}</h1>
+        <img [src]="selectedProduct?.imageUrl" alt="">
+        <p>{{selectedProduct?.description }}</p>
+    </div>
+
+    <div *ngIf="isLoading" fxFlex fxLayout="column" fxLayoutAlign="center center">
+        <h1>Product details are loading...</h1>
+        <mat-spinner></mat-spinner>
+    </div>
+
+    <h1 class="error" *ngIf="error"> Something went wrong</h1>
 </div>

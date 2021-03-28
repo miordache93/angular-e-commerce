@@ -1,16 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+// Custom Components & Modules
 import { ProductsPageComponent } from './products-page/products-page.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductsRoutingModule } from './products-routing.module';
 import { ProductCardComponent } from './product-card/product-card.component';
+// Material Module
 import { MatCardModule } from '@angular/material/card';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
-import { ProductsService } from './services/products.service';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { MatInputModule } from '@angular/material/input';
-
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { FlexLayoutModule } from '@angular/flex-layout';
+// Ngrx
+import { EffectsModule } from '@ngrx/effects';
+import { ProductsEffects } from 'src/app/store/effects';
+import { StoreModule } from '@ngrx/store';
+import { productsReducer } from './../../store/reducers/products.reducer';
+// Services
+import { ProductsService } from './services/products.service';
 
 @NgModule({
   declarations: [ProductsPageComponent, ProductDetailsComponent, ProductCardComponent],
@@ -21,7 +28,9 @@ import { MatInputModule } from '@angular/material/input';
     MatButtonModule,
     MatInputModule,
     MatProgressSpinnerModule,
-    ProductsRoutingModule
+    ProductsRoutingModule,
+    StoreModule.forFeature('products', productsReducer),
+    EffectsModule.forFeature([ProductsEffects])
   ],
   exports: [
     ProductsPageComponent

@@ -1,0 +1,14 @@
+.error {
+  color: red;
+}
+
+.product-details__container {
+  width: 200px;
+  height: 350px;
+
+  img {
+    width: 200px;
+    height: 300px;
+    object-fit: contain;
+  }
+}

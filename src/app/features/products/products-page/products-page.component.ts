@@ -1,13 +1,11 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { ROUTE_ANIMATIONS_ELEMENTS } from 'src/app/shared/constants/route.animations';
-import { Observable, fromEvent } from 'rxjs';
-import { ApiService } from 'src/app/shared/services/api.service';
-import { data } from '../../../shared/constants/products';
-import { AppState } from 'src/app/store/state';
+import { fromEvent } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { selectFilteredProducts, selectProductsFilters, isLoading, selectProductItems } from 'src/app/store/selectors/products.selectors';
+import { selectFilteredProducts, selectFilters } from 'src/app/store/selectors/products.selectors';
 import { actionGetProducts, actionProductsFilters } from 'src/app/store/actions/products.actions';
 import { map, filter, debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { ProductsState } from 'src/app/store/products.state';
 @Component({
   selector: 'app-products-page',
   templateUrl: './products-page.component.html',
@@ -23,7 +21,7 @@ export class ProductsPageComponent implements OnInit {
   @ViewChild('searchProductsInput', { static: true }) searchProductsInput: ElementRef;
 
 
-  constructor(private store: Store<AppState>) { }
+  constructor(private store: Store<ProductsState>) { }
 
   ngOnInit(): void {
     this.store.dispatch(actionGetProducts());
@@ -46,13 +44,11 @@ export class ProductsPageComponent implements OnInit {
           }
         }));
       });
-
-    this.store.select(isLoading).subscribe(res => {
-      this.isLoading = res;
-    });
-    this.filters$ = this.store.select(selectProductsFilters);
-    this.store.select(selectFilteredProducts).subscribe(res => {
-      this.products = res;
+    this.filters$ = this.store.select(selectFilters);
+    this.store.select(selectFilteredProducts).subscribe((res: ProductsState) => {
+      this.products = res.items;
+      this.isLoading = res.pending;
+      this.error = res.error;
     });
   }
 

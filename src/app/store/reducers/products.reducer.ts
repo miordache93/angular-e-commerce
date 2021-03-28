@@ -1,10 +1,14 @@
 import { createReducer, on, Action } from '@ngrx/store';
-import { ProductsState } from '../models/products.model';
-import { actionGetProducts,
-         actionGetProductsSuccess,
-         actionGetProductsError,
-         actionProductsFilters
+import {
+    actionGetProducts,
+    actionGetProductsSuccess,
+    actionGetProductsError,
+    actionProductsFilters,
+    actionGetProductById,
+    actionGetProductByIdSuccess,
+    actionGetProductByIdError
 } from '../actions/products.actions';
+import { ProductsState } from '../products.state';
 
 export const defaultFilters = {
     searchText: '',
@@ -20,23 +24,28 @@ export const initialProductsState: ProductsState = {
     items: [],
     error: false,
     pending: false,
-    filters: defaultFilters
+    filters: defaultFilters,
+    selectedItem: null
 };
 
 const reducer = createReducer(
     initialProductsState,
-    on(actionGetProducts, (state) => ({
-        ...state,
-        items: [],
-        pending: true,
-        error: null
-    })),
-    on(actionGetProductsSuccess, (state, { items }) => ({
-        ...state,
-        items,
-        pending: false,
-        error: null
-    })),
+    on(actionGetProducts, (state: ProductsState) => {
+        return {
+            ...state,
+            items: [],
+            pending: true,
+            error: null
+        }
+    }),
+    on(actionGetProductsSuccess, (state, { items }) => {
+        return {
+            ...state,
+            items,
+            pending: false,
+            error: null
+        }
+    }),
     on(actionGetProductsError, (state, { error }) => ({
         ...state,
         pending: false,
@@ -47,7 +56,26 @@ const reducer = createReducer(
         ...state,
         pending: true,
         filters
-    }))
+    })),
+    on(actionGetProductById, (state: any) => ({
+        ...state,
+        selectedItem: null,
+        pending: true
+    })),
+    on(actionGetProductByIdSuccess, (state: any, { product }) => ({
+        ...state,
+        selectedItem: { ...product },
+        pending: false,
+        error: null
+    })),
+    on(actionGetProductByIdError, (state: any, { error }) => {
+        return {
+            ...state,
+            selectedItem: null,
+            pending: false,
+            error
+        }
+    }),
 );
 // tslint:disable-next-line:typedef
 export function productsReducer(state: ProductsState, action: Action) {

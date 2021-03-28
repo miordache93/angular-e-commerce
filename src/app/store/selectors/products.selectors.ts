@@ -1,62 +1,66 @@
 import { createSelector, createFeatureSelector } from '@ngrx/store';
-import { AppState, selectRouterState } from '../state';
-import { ProductsState, Product } from '../models/products.model';
+import { ProductsState } from '../products.state';
 
-export const selectProductsState = createFeatureSelector<
-  AppState,
-  ProductsState
->('products');
 
-export const selectProductItems = createSelector(
+export const selectProductsState = createFeatureSelector<ProductsState>('products');
+
+export const selectItems = createSelector(
   selectProductsState,
   (state: ProductsState) => state.items
 );
 
-export const selectProductsFilters = createSelector(
+export const selectItem = createSelector (
   selectProductsState,
-  (state) => state.filters
+  (state: ProductsState) => state.selectedItem);
+
+
+export const selectLoading = createSelector(
+  selectProductsState,
+  (state: ProductsState) => !!state.pending
 );
 
+export const selectError = createSelector(
+  selectProductsState,
+  (state: ProductsState) => !!state.error
+);
 
+export const selectFilters = createSelector(
+  selectProductsState,
+  (state: ProductsState) => state.filters
+);
 
 export const selectFilteredProducts = createSelector(
-  selectProductItems,
-  selectProductsFilters,
-  (items, filters) => {
-    return filterProducts(items, filters);
+  selectItems,
+  selectFilters,
+  selectLoading,
+  selectError,
+  (items, filters, pending, error) => {
+    return {
+      items : filterProducts(items, filters),
+      pending,
+      error
+    };
   }
 );
 
-export const selectSelectedProduct = createSelector(
-  selectProductItems,
-  selectRouterState,
-  (items, params: any) => {
-    console.log('selector', params);
-    return params && items.find(item => item.id === params.state.root.firstChild.params.id);
-  }
-);
-
-
-export const isLoading = createSelector(
-  selectProductsState,
-  state => !!state.pending
+export const selectProduct = createSelector(
+  selectItem,
+  selectLoading,
+  selectError,
+  (item, pending, error) => ({item, pending, error})
 );
 
 const filterProducts = (items, filters) => {
   for (const prop in filters) {
-     if (filters[prop] && FILTERS_MAP[prop]) {
-        items = FILTERS_MAP[prop](items, filters[prop]);
-     }
+    if (filters[prop] && FILTERS_MAP[prop]) {
+      items = FILTERS_MAP[prop](items, filters[prop]);
+    }
   }
   return items;
 };
 
 const FILTERS_MAP = {
   searchText: (items, searchText) => {
-     return items.filter(item => item.name.indexOf(searchText) > -1);
+    return items.filter(item => item.name.indexOf(searchText) > -1);
   }
 };
-
-
-
-
