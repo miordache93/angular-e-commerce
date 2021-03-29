@@ -24,7 +24,8 @@ export const initialProductsState: ProductsState = {
     items: [],
     error: false,
     pending: false,
-    filters: defaultFilters,
+    filters: window.localStorage.getItem('ECommerce-PRODUCTS_FILTERS') ?
+     JSON.parse(window.localStorage.getItem('ECommerce-PRODUCTS_FILTERS')) : defaultFilters,
     selectedItem: null
 };
 

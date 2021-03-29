@@ -1,6 +1,6 @@
 import { ActionReducer, INIT, UPDATE } from '@ngrx/store';
 
-import { LocalStorageService } from '../../shared/services/local-storage.serice';;
+import { LocalStorageService } from '../../shared/services/local-storage.service';
 import { AppState } from './../state';
 
 export function initStateFromLocalStorage(

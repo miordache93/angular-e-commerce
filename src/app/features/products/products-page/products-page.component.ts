@@ -44,7 +44,10 @@ export class ProductsPageComponent implements OnInit {
           }
         }));
       });
-    this.filters$ = this.store.select(selectFilters);
+    this.store.select(selectFilters).subscribe(res => {
+      this.searchText = res.searchText;
+      this.filters$ = res;
+    });
     this.store.select(selectFilteredProducts).subscribe((res: ProductsState) => {
       this.products = res.items;
       this.isLoading = res.pending;

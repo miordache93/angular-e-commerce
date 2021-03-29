@@ -18,7 +18,7 @@ import { selectPageAnimations,
 import { State } from '../models/';
 
 import { AnimationsService } from 'src/app/shared/services/animations.service';
-import { LocalStorageService } from 'src/app/shared/services/local-storage.serice';
+import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 
 const INIT = of('init-effect-trigger');
 
