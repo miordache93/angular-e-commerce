@@ -1,4 +1,4 @@
-export const data = {
+export let data = {
     "products": [
         {
             "id": "GGOEAFKA087499",

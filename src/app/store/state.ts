@@ -4,14 +4,16 @@ import { routerReducer, RouterReducerState } from '@ngrx/router-store';
 
 // custom imports
 import { environment } from '../../environments/environment';
-import { authReducer,
-         debug,
-         initStateFromLocalStorage,
-         settingsReducer
+import {
+  authReducer,
+  debug,
+  initStateFromLocalStorage,
+  settingsReducer
 } from './reducers/';
-import { AuthState,
-         SettingsState,
-         RouterStateUrl
+import {
+  AuthState,
+  SettingsState,
+  RouterStateUrl
 } from './models/';
 
 export const reducers: ActionReducerMap<AppState> = {

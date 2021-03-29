@@ -34,7 +34,9 @@ export class ProductsEffects {
       switchMap((action) =>
         this.service.getProducts().pipe(
           map((items) => actionGetProductsSuccess({ items })),
-          catchError((error) => of(actionGetProductsError({ error })))
+          catchError((error) => {
+            return of(actionGetProductsError({ error }));
+          })
         )
       )
     )

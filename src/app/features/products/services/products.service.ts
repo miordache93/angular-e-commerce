@@ -8,20 +8,21 @@ import { environment } from '../../../../environments/environment';
 
 @Injectable()
 export class ProductsService {
-    constructor(private http: HttpClient) { }
+    data: any[];
+    constructor(private http: HttpClient) {
+        DATA.products.forEach((product: any) => {
+            if (!product.imageUrl) { product.imageUrl = '../assets/product-image.jpg'; }
+        });
+
+        this.data = DATA.products;
+    }
 
     getProducts(): Observable<Product[]> {
         // for local testing
         if (environment.production) {
-            return of(DATA).pipe(
+            return of(this.data).pipe(
                 tap(res => {
                     console.log(res);
-                }),
-                map((res: any) => {
-                    res.products.forEach(prod => {
-                        prod.imageUrl = '../assets/product-image.jpg';
-                    });
-                    return res.products;
                 }),
                 delay(2500)
             );
@@ -40,13 +41,8 @@ export class ProductsService {
 
     getProductById(productId: string): Observable<Product> {
         if (environment.production) {
-            return of(DATA).pipe(
-                map((res: any) => {
-                    res.products.forEach(prod => {
-                        prod.imageUrl = '../assets/product-image.jpg';
-                    });
-                    return res.products.find(item => item.id === productId);
-                }),
+            return of(this.data).pipe(
+                map((res: any) => res.find(item => item.id === productId)),
                 delay(2500)
             );
         } else {

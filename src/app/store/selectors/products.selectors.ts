@@ -47,7 +47,13 @@ export const selectProduct = createSelector(
   selectItem,
   selectLoading,
   selectError,
-  (item, pending, error) => ({item, pending, error})
+  (item, pending, error) => {
+    return {
+      item,
+      pending,
+      error
+    };
+  }
 );
 
 const filterProducts = (items, filters) => {
