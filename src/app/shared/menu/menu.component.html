@@ -10,7 +10,7 @@
     </ng-container>
     <!-- Handle sub menu items -->
     <ng-container *ngIf="!item.children">
-      <button *ngIf="!item.hidden" mat-menu-item [routerLink]="item.path" (click)="item.onClick()">
+      <button *ngIf="!item.hidden" mat-menu-item [routerLink]="item.path" routerLinkActive="active-link" (click)="item.onClick()">
         <mat-icon>{{item.icon}}</mat-icon>
         <span fxHide fxShow.gt-xs> {{item.name | translate }}  </span>
       </button>

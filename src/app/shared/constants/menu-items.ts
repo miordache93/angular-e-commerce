@@ -33,6 +33,11 @@ export const MENU_ITEMS: MenuItems[] = [
         methods: []
     },
     {
+        name: 'menuItems.contactUs',
+        icon: 'contact_page',
+        path: 'contact-us'
+    },
+    {
         name: 'menuItems.cart',
         icon: 'shopping_cart',
         path: '/cart',

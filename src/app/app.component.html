@@ -21,11 +21,11 @@
     <mat-sidenav #sidenav>
       <mat-nav-list>
         <!-- <a (click)="sidenav.toggle()" href="" mat-list-item>Close</a> -->
-        <a routerLink="/" mat-list-item>Home</a>
-        <a [routerLink]="['/products']" mat-list-item>Products</a>
-        <a href="#" mat-list-item>Cart</a>
-        <a href="#" mat-list-item (click)="onLoginClick()" *ngIf="!isAuthenticated">Login / Sign Up</a>
-        <a href="#" mat-list-item (click)="onLogoutClick()" *ngIf="isAuthenticated">Logout</a>
+        <a routerLink="/" mat-list-item  routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" >Home</a>
+        <a [routerLink]="['/products']" mat-list-item  routerLinkActive="active-link">Products</a>
+        <a [routerLink]="['/cart']" mat-list-item  routerLinkActive="active-link">Cart</a>
+        <a href="#" mat-list-item (click)="onLoginClick()" *ngIf="!isAuthenticated"  routerLinkActive="active-link">Login / Sign Up</a>
+        <a href="#" mat-list-item (click)="onLogoutClick()" *ngIf="isAuthenticated"  routerLinkActive="active-link">Logout</a>
         <div>
           <p>Language</p>
           <button mat-icon-button (click)="changeLanguage('en')">

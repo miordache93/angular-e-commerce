@@ -12,4 +12,9 @@
         color: mat-color($foreground, text);
         background-color: $background !important;
     }
-} 
+
+    .active-link {
+        background-color: mat-color($primary) !important;
+        color: black;
+    }
+}

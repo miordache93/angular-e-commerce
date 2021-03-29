@@ -27,6 +27,10 @@ const routes: Routes = [
     component: FourthDashboardComponent
   },
   {
+    path: 'contact-us',
+    component: TestComponent,
+  },
+  {
     path: 'settings',
     component: SettingsComponent
   },
