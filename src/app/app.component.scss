@@ -44,6 +44,14 @@ mat-toolbar {
   padding-top: 64px;
 }
 
+.app-component-navigation__container {
+  ::ng-deep {
+    span {
+      max-width: 50px;
+    }
+  }
+}
+
 mat-sidenav {
   max-width: 50%;
 }

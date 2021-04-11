@@ -14,5 +14,6 @@
     "wishlist": "Wishlist",
     "settings": "Settings",
     "contactUs": "Contact Us"
-  }
+  },
+  "searchInputPleaceHolder": "Search"
 }

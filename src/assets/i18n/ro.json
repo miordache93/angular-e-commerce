@@ -6,13 +6,14 @@
     "home3": "Acasa 3",
     "home4": "Acasa 4",
     "User": "Utilizator",
-    "profile": "User Profile",
+    "profile": "Profil",
     "products": "Produse",
     "cart": "Cos",
     "login": "Authentificare / Creeaza cont",
     "logout": "Logout",
     "wishlist": "Favorite",
     "settings": "Setari",
-    "contactUs": "Contact Us"
-  }
+    "contactUs": "Contacteaza-ne"
+  },
+  "searchInputPleaceHolder": "Cauta"
 }

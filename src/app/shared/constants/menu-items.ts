@@ -2,6 +2,7 @@ export const MENU_ITEMS: MenuItems[] = [
     {
         name: 'menuItems.home',
         icon: 'home',
+        hideOnMobile: true,
         children: [
             {
                 name: 'menuItems.home',
@@ -27,25 +28,37 @@ export const MENU_ITEMS: MenuItems[] = [
         ]
     },
     {
+        name: '',
+        icon: 'search',
+        path: '',
+        methods: ['search'],
+        hideOnMobile: false,
+        hideOnDesktop: true
+    },
+    {
         name: 'menuItems.products',
         icon: 'storefront',
         path: '/products',
-        methods: []
+        methods: [],
+        hideOnMobile: true
     },
     {
         name: 'menuItems.contactUs',
         icon: 'contact_page',
-        path: 'contact-us'
+        path: 'contact-us',
+        hideOnMobile: true
     },
     {
         name: 'menuItems.cart',
         icon: 'shopping_cart',
         path: '/cart',
-        methods: []
+        methods: [],
+        hideOnMobile: false
     },
     {
         name: 'menuItems.user',
         icon: 'person',
+        hideOnMobile: false,
         children: [
             {
                 name: 'menuItems.profile',
@@ -84,6 +97,8 @@ interface MenuItems {
     icon: string;
     path?: string;
     children?: any;
+    hideOnMobile?: boolean;
+    hideOnDesktop?: boolean;
     methods?: string[];
     onClick?: () => void;
 }

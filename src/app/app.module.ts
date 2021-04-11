@@ -18,6 +18,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
@@ -92,6 +93,7 @@ import { TestComponent } from './features/test/test.component';
     MatCardModule,
     MatInputModule,
     MatMenuModule,
+    MatDialogModule,
     MatSelectModule,
     NgMatSearchBarModule,
     StoreModule.forRoot(reducers, { metaReducers }),

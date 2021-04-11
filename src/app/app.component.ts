@@ -17,6 +17,7 @@ import { LANGUAGES } from './shared/constants/languages';
 import { authLogin, authLogout } from './store/actions';
 import { selectIsAuthenticated } from './store/selectors/auth.selectors';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-root',
@@ -33,7 +34,8 @@ export class AppComponent implements OnInit, AfterViewInit {
   isAuthenticated: boolean;
   menuItemsMap = {
     login: this.onLoginClick.bind(this),
-    test: this.onHomeClick.bind(this)
+    test: this.onHomeClick.bind(this),
+    search: this.onSearchClick.bind(this)
   };
   mobileView = false;
   enableBack = false;
@@ -49,6 +51,7 @@ export class AppComponent implements OnInit, AfterViewInit {
               private domSanitizer: DomSanitizer,
               private location: Location,
               private breakpointObserver: BreakpointObserver,
+              private dialog: MatDialog,
               private router: Router,
               private store: Store<any>) {
     translateService.setDefaultLang('en');
@@ -79,6 +82,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       } else {
         this.mobileView = false;
       }
+      this.traverseMenuItems(this.setupHiddenProp.bind(this));
     });
   }
 
@@ -121,11 +125,13 @@ export class AppComponent implements OnInit, AfterViewInit {
       for (const method of item.methods) {
         item.onClick = this.menuItemsMap[method];
       }
+    } else {
+      item.onClick = () => {};
     }
   }
 
   setupHiddenProp(item): void {
-    item.hidden = false;
+    this.hideOnMobileProp(item);
     if (this.isAuthenticated) {
       if (item.path === '/authenticate') {
         item.hidden = true;
@@ -137,12 +143,37 @@ export class AppComponent implements OnInit, AfterViewInit {
     }
   }
 
+  hideOnMobileProp(item): void {
+    if (item.hideOnMobile) {
+      if (this.mobileView) {
+        item.hidden = true;
+      } else {
+        item.hidden = false;
+      }
+    } else {
+        item.hidden = false;
+    }
+
+    if (item.hideOnDesktop) {
+      if (!this.mobileView) {
+        item.hidden = true;
+      } else {
+        item.hidden = false;
+      }
+    }
+  }
+
   traverseMenuItems(updateFn): void {
     const traverse = (menuItems) => {
       menuItems.forEach(item => {
         if (!item.children) {
           updateFn(item);
         } else {
+          if (item.hideOnMobile && this.mobileView) {
+            item.hidden = true;
+          } else {
+            item.hidden = false;
+          }
           traverse(item.children);
         }
       });
@@ -191,5 +222,27 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   onHomeClick(): void {
     console.log('Home Clicked');
+  }
+
+  onSearchClick(): void {
+    const dialogRef = this.dialog.open(AppTestDialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog closed`);
+    });
+  }
+}
+
+@Component({
+  selector: 'app-test-example-dialog',
+  templateUrl: 'app-test-dialog.html',
+})
+export class AppTestDialogComponent {
+
+  constructor(
+    public dialogRef: MatDialogRef<AppTestDialogComponent>) {}
+
+  onClick(): void {
+    this.dialogRef.close();
   }
 }
