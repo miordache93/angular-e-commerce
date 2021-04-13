@@ -21,5 +21,10 @@
         <div  fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" class="product-card" *ngFor="let product of products" >
             <app-product-card [product]="product"  [ngClass]="routeAnimationsElements"></app-product-card>
         </div>
+        <mat-paginator
+              [length]="length"
+              [pageSize]="pageSize"
+              [pageSizeOptions]="pageSizeOptions">
+        </mat-paginator>
     </div>
 </div>

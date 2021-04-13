@@ -26,8 +26,9 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
   animations: [routeAnimations]
 })
 export class AppComponent implements OnInit, AfterViewInit {
+
   title = 'Angular E-Commerce';
-  theme$: Observable<string>;
+  theme = '';
   language: string;
   menuItems = MENU_ITEMS;
   languages = LANGUAGES;
@@ -88,7 +89,9 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.traverseMenuItems(this.setupOnClickEvents.bind(this));
-    this.theme$ = this.store.pipe(select(selectTheme));
+    this.store.pipe(select(selectTheme)).subscribe(theme => {
+      this.theme = theme;
+    });
     this.store.pipe(select(selectSettingsLanguage)).subscribe(lang => {
       this.translateService.use(lang);
       this.language = lang;

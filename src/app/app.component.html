@@ -1,16 +1,19 @@
-<div class="app-component" style="height: 100vh;" [class]="'theme-wrapper ' + (theme$ | async)">
+<div class="app-component" style="height: 100vh;" [class]="'theme-wrapper ' + theme">
   <mat-toolbar #toolBara class="app-component__toolbar fixed" [class.mobile-view]="mobileView && enableBack" color="primary">
     <mat-toolbar-row fxLayoutAlign="space-between center">
       <button mat-icon-button *ngIf="!enableBack" color="warn" (click)="toggleSidenav()" fxShow="true" fxHide.gt-sm>
-        <mat-icon >menu</mat-icon>
+        <mat-icon *ngIf="!sidenav.opened; else showCross">menu</mat-icon>
+        <ng-template #showCross>
+          <mat-icon aria-label="Side nav toggle icon">close</mat-icon>
+        </ng-template>
       </button>
       <button mat-mini-fab *ngIf="enableBack" color="warn" (click)="toggleSidenav()" fxShow="true" fxHide.gt-sm>
         <mat-icon >navigate_before</mat-icon>
       </button>
-      <div class="app-component-navigation__container" fxFlex fxLayoutAlign="space-between center">
-        <span (click)="navigateHome()"> {{ title }} </span>
+      <div class="app-component-navigation__container" fxFlex fxLayoutAlign="space-between center" fxLayoutAlign.xs="end end">
+        <span fxFlex="20" (click)="navigateHome()" fxHide="true" fxShow.gt-sm> {{ title }} </span>
 
-        <div *ngIf="!mobileView" class="app-component-search__container">
+        <div fxFlex="40"  *ngIf="!mobileView" class="app-component-search__container">
           <mat-form-field class="example-form-field">
             <mat-label>{{ 'searchInputPleaceHolder' | translate }}</mat-label>
             <input matInput type="text" [(ngModel)]="value">
@@ -23,8 +26,8 @@
           </mat-form-field>
         </div>
 
-        <span class="menu-spacer"></span>
-        <div>
+        <!-- <span class="menu-spacer"></span> -->
+        <div fxFlex="40" fxFlex.xs="60">
           <app-main-menu [menuItems]="menuItems"></app-main-menu>
         </div>
       </div>
@@ -53,10 +56,10 @@
           </button>
         </div>
         <div>
-          <p>Theme: {{ theme$ | async }}</p>
-          <button mat-flat-button color="primary" (click)="changeTheme('default-theme')"> Change to default theme</button>
-          <button mat-flat-button color="warn" (click)="changeTheme('dark-theme')"> Change to dark theme</button>
-          <button mat-flat-button color="accent" (click)="changeTheme('crazy-theme')"> Change to crazy theme </button>
+          <p>Active Theme: {{ theme }}</p>
+          <mat-slide-toggle [checked]="theme === 'default-theme'" (change)="changeTheme('default-theme')">Default theme</mat-slide-toggle>
+          <mat-slide-toggle [checked]="theme === 'dark-theme'" (change)="changeTheme('dark-theme')">Dark theme</mat-slide-toggle>
+          <mat-slide-toggle [checked]="theme === 'crazy-theme'" (change)="changeTheme('crazy-theme')">Crazy theme</mat-slide-toggle>
         </div>
       </mat-nav-list>
     </mat-sidenav>

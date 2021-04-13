@@ -25,6 +25,10 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { NgMatSearchBarModule } from 'ng-mat-search-bar';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+
 
 // Custom imports
 import { DashboardComponent } from './features/dashboard/dashboard.component';
@@ -95,7 +99,10 @@ import { TestComponent } from './features/test/test.component';
     MatMenuModule,
     MatDialogModule,
     MatSelectModule,
+    MatSlideToggleModule,
     NgMatSearchBarModule,
+    MatTableModule,
+    MatPaginatorModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     StoreRouterConnectingModule.forRoot(),
     environment.production

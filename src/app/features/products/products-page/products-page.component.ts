@@ -30,7 +30,7 @@ export class ProductsPageComponent implements OnInit {
         map((event: any) => {
           return event.target.value;
         }),
-        filter(res => res.length > 2),
+        filter(res => res.length > 2 || res !== ''),
         debounceTime(1000),
         distinctUntilChanged()
       ).subscribe((text: string) => {

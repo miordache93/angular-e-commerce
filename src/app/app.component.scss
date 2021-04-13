@@ -44,16 +44,8 @@ mat-toolbar {
   padding-top: 64px;
 }
 
-.app-component-navigation__container {
-  ::ng-deep {
-    span {
-      max-width: 50px;
-    }
-  }
-}
-
 mat-sidenav {
-  max-width: 50%;
+  max-width: 65%;
 }
 
 .mobile-view {
@@ -63,7 +55,7 @@ mat-sidenav {
 @media screen and (max-width: #{$sm}) {
   ::ng-deep {
     mat-nav-list {
-      padding-top: 60px !important;
+      padding-top: 55px !important;
     }
   }
 }
