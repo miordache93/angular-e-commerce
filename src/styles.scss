@@ -10,6 +10,8 @@
 @import './app/app.component.theme';
 @import './app/shared/components/footer/footer.component.theme';
 
+@import '~ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import '~ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
 
 @mixin custom-components-theme($theme) {
   @include app-footer-component-theme($theme);

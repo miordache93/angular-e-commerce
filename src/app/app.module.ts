@@ -29,6 +29,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 
+// Owl Carousel
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 // Custom imports
 import { DashboardComponent } from './features/dashboard/dashboard.component';
@@ -55,6 +57,7 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 // env
 import { environment } from 'src/environments/environment';
 import { TestComponent } from './features/test/test.component';
+import { CarouselHolderComponent } from './shared/components/carousel-holder/carousel-holder.component';
 
 
 @NgModule({
@@ -69,7 +72,8 @@ import { TestComponent } from './features/test/test.component';
     MenuComponent,
     MainMenuComponent,
     SettingsComponent,
-    TestComponent
+    TestComponent,
+    CarouselHolderComponent
   ],
   imports: [
     BrowserModule,
@@ -89,6 +93,7 @@ import { TestComponent } from './features/test/test.component';
     }),
     LayoutModule,
     FlexLayoutModule,
+    CarouselModule,
     MatToolbarModule,
     ProductsModule,
     MatSidenavModule,

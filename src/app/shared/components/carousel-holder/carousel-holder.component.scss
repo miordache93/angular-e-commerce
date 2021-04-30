@@ -1,0 +1,19 @@
+
+@mixin slider {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    height: 55vh;
+}
+
+::ng-deep {
+    .slider-container {
+        background-image: url('../../../../assets/banner.jpeg');
+       @include slider();
+    }
+
+    .second-slider-container {
+        background-image: url('../../../../assets/banner2.jpeg');
+        @include slider();
+    }
+}
