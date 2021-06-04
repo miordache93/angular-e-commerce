@@ -6,9 +6,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Deployed version available at:
+## Deployed usign netlify available at:
 https://vibrant-bell-a27d31.netlify.app/#/
 
-## Functionality
+## The idea behind the example
 
 Angular E-Commerce template
